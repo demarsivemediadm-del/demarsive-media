@@ -1,0 +1,84 @@
+{
+  "admin": {
+    "email": "admin@demarsivemedia.com",
+    "password": "$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi"
+  },
+  "site": {
+    "heroName": "Augustine Ackah",
+    "heroBrand": "// Demarsive Media",
+    "heroDesc": "Hi, I'm Augustine, the creative mind behind Demarsive Media. I help businesses stand out through modern design, branding, and digital experiences.",
+    "heroTagline": "We Build Brands That People Remember.",
+    "heroPhoto": "",
+    "aboutText1": "I'm Augustine Ackah, an IT professional and digital creative based in Accra, Ghana. With over 4 years of experience, I combine technical skills with creative design to deliver high-quality digital solutions.",
+    "aboutText2": "As the founder of Demarsive Media, my goal is to build a strong personal brand while helping businesses improve their online presence through design, technology, and digital marketing.",
+    "email": "hello@demarsivemedia.com",
+    "location": "Accra, Ghana",
+    "social": "@demarsivemedia"
+  },
+  "portfolio": [
+    {
+      "id": "p1",
+      "category": "graphic",
+      "title": "Telus Inc — Luxury Cars",
+      "description": "Complete brand identity for a luxury automotive company including logo, typography, and brand guidelines.",
+      "tags": ["Logo", "Branding", "Print"],
+      "image": "",
+      "emoji": "🚗",
+      "featured": true
+    },
+    {
+      "id": "p2",
+      "category": "graphic",
+      "title": "Eid ul Adha Campaign",
+      "description": "Gold typography event campaign with cinematic visuals for social media.",
+      "tags": ["Social", "Event"],
+      "image": "",
+      "emoji": "✨",
+      "featured": false
+    },
+    {
+      "id": "p3",
+      "category": "video",
+      "title": "Forex Trading Education Series",
+      "description": "High-energy promo videos with kinetic typography and cinematic transitions for forex educators.",
+      "tags": ["DaVinci Resolve", "Motion", "Ads"],
+      "image": "",
+      "emoji": "📈",
+      "featured": true
+    },
+    {
+      "id": "p4",
+      "category": "web",
+      "title": "Law Comrade Website",
+      "description": "Legal information website with clean layout and conversion-focused design.",
+      "tags": ["Figma", "Frontend"],
+      "image": "",
+      "emoji": "⚖️",
+      "featured": false
+    }
+  ],
+  "blog": [
+    {
+      "id": "b1",
+      "title": "Ghana Digital Creative Summit 2025",
+      "date": "2025-06-01",
+      "category": "event",
+      "excerpt": "The biggest gathering of designers, developers, and digital creators in Ghana is coming.",
+      "content": "Full content goes here...",
+      "image": "",
+      "emoji": "🎪",
+      "published": true
+    },
+    {
+      "id": "b2",
+      "title": "5 Ghanaian Designers Redefining Visual Identity",
+      "date": "2025-05-10",
+      "category": "creative",
+      "excerpt": "A spotlight on local creatives pushing boundaries in brand design across Africa.",
+      "content": "Full content goes here...",
+      "image": "",
+      "emoji": "🎨",
+      "published": true
+    }
+  ]
+}

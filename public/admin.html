@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Demarsive Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0f14;--bg2:#1a1a1f;--bg3:#222228;--cyan:#00c8d4;--white:#f4f4f8;--muted:#8a8a9a;--border:rgba(255,255,255,.08);--red:#ef4444;--green:#22c55e}
+body{background:var(--bg);color:var(--white);font-family:'Poppins',sans-serif;min-height:100vh}
+#login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000}
+.login-box{background:var(--bg2);border:1px solid rgba(0,200,212,.2);padding:3rem;width:400px;border-radius:8px}
+.login-logo{font-size:1.3rem;font-weight:700;color:var(--white);margin-bottom:.4rem}
+.login-sub{font-size:.82rem;color:var(--muted);margin-bottom:2.5rem}
+.login-field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.login-label{font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--cyan)}
+.login-input{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:.85rem 1rem;color:var(--white);font-family:'Poppins',sans-serif;font-size:.9rem;border-radius:4px;outline:none;transition:.3s}
+.login-input:focus{border-color:var(--cyan)}
+.login-btn{width:100%;padding:.9rem;background:var(--cyan);color:#000;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;border:none;cursor:pointer;border-radius:4px;margin-top:.5rem;transition:.3s}
+.login-btn:hover{background:#00a8b5}
+.login-error{color:var(--red);font-size:.82rem;margin-top:.8rem;text-align:center;display:none}
+#app{display:none;min-height:100vh;flex-direction:row}
+#app.show{display:flex}
+.sidebar{width:240px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;overflow-y:auto}
+.sidebar-logo{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid var(--border)}
+.sidebar-logo-text{font-size:1.1rem;font-weight:700;color:var(--white)}
+.sidebar-badge{font-size:.65rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-top:.2rem}
+.sidebar-nav{flex:1;padding:1.5rem 0}
+.nav-item{display:flex;align-items:center;gap:.9rem;padding:.85rem 1.5rem;color:var(--muted);cursor:pointer;transition:.25s;font-size:.88rem;font-weight:500;text-decoration:none}
+.nav-item:hover,.nav-item.active{color:var(--cyan);background:rgba(0,200,212,.06);border-right:2px solid var(--cyan)}
+.nav-icon{font-size:1.1rem;width:20px;text-align:center}
+.sidebar-bottom{padding:1.5rem;border-top:1px solid var(--border)}
+.view-site-btn{display:block;text-align:center;padding:.7rem;border:1.5px solid rgba(0,200,212,.3);color:var(--cyan);text-decoration:none;font-size:.8rem;font-weight:600;border-radius:4px;transition:.3s;margin-bottom:.8rem}
+.view-site-btn:hover{background:rgba(0,200,212,.08)}
+.logout-btn{width:100%;padding:.7rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:var(--red);font-family:'Poppins',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;border-radius:4px;transition:.3s}
+.logout-btn:hover{background:rgba(239,68,68,.2)}
+.main{margin-left:240px;flex:1;min-height:100vh}
+.topbar{background:var(--bg2);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-title{font-size:1.1rem;font-weight:700;color:var(--white)}
+.topbar-user{font-size:.8rem;color:var(--muted)}
+.content{padding:2rem}
+.page{display:none}.page.active{display:block}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2.5rem}
+.stat-box{background:var(--bg2);border:1px solid var(--border);padding:1.5rem;border-radius:8px}
+.stat-box:hover{border-color:rgba(0,200,212,.3)}
+.stat-box-num{font-size:2.2rem;font-weight:800;color:var(--cyan)}
+.stat-box-label{font-size:.78rem;color:var(--muted);margin-top:.3rem;text-transform:uppercase;letter-spacing:1px}
+.quick-actions{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.qa-btn{background:var(--bg2);border:1px solid var(--border);padding:1.5rem;border-radius:8px;cursor:pointer;transition:.3s;text-align:center;font-family:'Poppins',sans-serif;color:var(--white)}
+.qa-btn:hover{border-color:var(--cyan);background:rgba(0,200,212,.06)}
+.qa-icon{font-size:2rem;margin-bottom:.5rem}.qa-label{font-size:.85rem;font-weight:600}
+.section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+.section-hdr h2{font-size:1.2rem;font-weight:700}
+.add-btn{padding:.6rem 1.4rem;background:var(--cyan);color:#000;font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:700;border:none;cursor:pointer;border-radius:4px;transition:.3s}
+.add-btn:hover{background:#00a8b5}
+.items-list{display:flex;flex-direction:column;gap:1rem}
+.item-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.2rem 1.5rem;display:flex;align-items:center;gap:1.2rem;transition:.3s}
+.item-card:hover{border-color:rgba(0,200,212,.2)}
+.item-thumb{width:60px;height:60px;border-radius:6px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;overflow:hidden}
+.item-thumb img{width:100%;height:100%;object-fit:cover}
+.item-info{flex:1;min-width:0}
+.item-title{font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:.2rem}
+.item-meta{font-size:.78rem;color:var(--muted)}
+.item-actions{display:flex;gap:.6rem;flex-shrink:0}
+.edit-btn{padding:.4rem .9rem;background:rgba(0,200,212,.1);border:1px solid rgba(0,200,212,.3);color:var(--cyan);font-family:'Poppins',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;border-radius:4px}
+.edit-btn:hover{background:rgba(0,200,212,.2)}
+.del-btn{padding:.4rem .9rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);color:var(--red);font-family:'Poppins',sans-serif;font-size:.75rem;font-weight:600;cursor:pointer;border-radius:4px}
+.del-btn:hover{background:rgba(239,68,68,.2)}
+.pub-badge{padding:.25rem .7rem;font-size:.68rem;font-weight:700;border-radius:20px;letter-spacing:1px}
+.pub-badge.published{background:rgba(34,197,94,.15);color:var(--green);border:1px solid rgba(34,197,94,.3)}
+.pub-badge.draft{background:rgba(139,139,139,.1);color:var(--muted);border:1px solid rgba(139,139,139,.2)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;display:none;align-items:center;justify-content:center;padding:2rem}
+.modal-overlay.show{display:flex}
+.modal{background:var(--bg2);border:1px solid var(--border);border-radius:12px;width:100%;max-width:680px;max-height:90vh;overflow-y:auto}
+.modal-header{padding:1.5rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg2);z-index:1}
+.modal-title{font-size:1.1rem;font-weight:700}
+.modal-close{background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;transition:.2s}
+.modal-close:hover{color:var(--white)}
+.modal-body{padding:2rem}
+.modal-footer{padding:1.5rem 2rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.2rem}
+.form-label{font-size:.72rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--cyan)}
+.form-input,.form-select,.form-textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:.85rem 1rem;color:var(--white);font-family:'Poppins',sans-serif;font-size:.9rem;border-radius:4px;outline:none;transition:.3s;width:100%}
+.form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--cyan)}
+.form-select option{background:#1a1a1f}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--muted)}
+.form-textarea{min-height:120px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.img-upload-area{border:2px dashed rgba(0,200,212,.25);border-radius:8px;padding:2rem;text-align:center;cursor:pointer;transition:.3s;background:rgba(0,200,212,.02)}
+.img-upload-area:hover{border-color:var(--cyan);background:rgba(0,200,212,.05)}
+.img-upload-label{font-size:.82rem;color:var(--muted)}
+.img-upload-label span{color:var(--cyan);font-weight:600}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:1rem;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:6px;margin-bottom:1.2rem}
+.toggle-label{font-size:.88rem;font-weight:500}
+.toggle{width:44px;height:24px;background:rgba(255,255,255,.1);border-radius:12px;position:relative;cursor:pointer;transition:.3s;border:none}
+.toggle.on{background:var(--cyan)}
+.toggle::after{content:'';position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;left:3px;transition:.3s}
+.toggle.on::after{left:23px}
+.editor-toolbar{display:flex;gap:.4rem;flex-wrap:wrap;padding:.6rem;background:var(--bg3);border:1px solid var(--border);border-bottom:none;border-radius:4px 4px 0 0}
+.editor-btn{padding:.3rem .6rem;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:.8rem;cursor:pointer;border-radius:3px;font-family:'Poppins',sans-serif}
+.editor-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.editor-area{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);min-height:200px;padding:1rem;color:var(--white);font-family:'Poppins',sans-serif;font-size:.9rem;border-radius:0 0 4px 4px;outline:none;line-height:1.7}
+.editor-area:focus{border-color:var(--cyan)}
+.admin-toast{position:fixed;top:1.5rem;right:1.5rem;padding:.8rem 1.5rem;border-radius:6px;font-size:.85rem;font-weight:600;z-index:9999;opacity:0;transform:translateX(60px);transition:.3s}
+.admin-toast.show{opacity:1;transform:translateX(0)}
+.admin-toast.ok{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.4);color:var(--green)}
+.admin-toast.err{background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.4);color:var(--red)}
+.settings-section{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:2rem;margin-bottom:1.5rem}
+.settings-title{font-size:1rem;font-weight:700;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);color:var(--cyan)}
+</style>
+</head>
+<body>
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Demarsive Media</div>
+    <div class="login-sub">Admin Panel — Sign in to manage your site</div>
+    <div class="login-field"><label class="login-label">Email</label><input class="login-input" id="login-email" type="email" value="admin@demarsivemedia.com"></div>
+    <div class="login-field"><label class="login-label">Password</label><input class="login-input" id="login-pass" type="password" placeholder="Your password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <button class="login-btn" onclick="doLogin()">Sign In →</button>
+    <div class="login-error" id="login-error">Invalid email or password</div>
+    <div style="margin-top:1rem;font-size:.75rem;color:var(--muted);text-align:center">Default: <span style="color:var(--cyan)">password</span></div>
+  </div>
+</div>
+
+<div id="app">
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-text">Demarsive</div>
+      <div class="sidebar-badge">Admin Panel</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a class="nav-item active" onclick="showPage('dashboard',this)"><span class="nav-icon">📊</span> Dashboard</a>
+      <a class="nav-item" onclick="showPage('portfolio',this)"><span class="nav-icon">🖼️</span> Portfolio</a>
+      <a class="nav-item" onclick="showPage('blog',this)"><span class="nav-icon">✍️</span> Blog & Events</a>
+      <a class="nav-item" onclick="showPage('hero',this)"><span class="nav-icon">📷</span> Hero Photo</a>
+      <a class="nav-item" onclick="showPage('settings',this)"><span class="nav-icon">⚙️</span> Settings</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="/" target="_blank" class="view-site-btn">👁 View Live Site</a>
+      <button class="logout-btn" onclick="logout()">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title" id="page-title">Dashboard</div>
+      <div class="topbar-user" id="topbar-user"></div>
+    </div>
+    <div class="content">
+
+      <div class="page active" id="page-dashboard">
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-box-num" id="stat-portfolio">0</div><div class="stat-box-label">Portfolio Items</div></div>
+          <div class="stat-box"><div class="stat-box-num" id="stat-blog">0</div><div class="stat-box-label">Blog Posts</div></div>
+          <div class="stat-box"><div class="stat-box-num" id="stat-published">0</div><div class="stat-box-label">Published</div></div>
+          <div class="stat-box"><div class="stat-box-num" id="stat-drafts">0</div><div class="stat-box-label">Drafts</div></div>
+        </div>
+        <h3 style="margin-bottom:1.2rem;font-size:1rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px">Quick Actions</h3>
+        <div class="quick-actions">
+          <div class="qa-btn" onclick="showPage('portfolio',document.querySelectorAll('.nav-item')[1]);openPortfolioModal()"><div class="qa-icon">➕</div><div class="qa-label">Add Portfolio Item</div></div>
+          <div class="qa-btn" onclick="showPage('blog',document.querySelectorAll('.nav-item')[2]);openBlogModal()"><div class="qa-icon">✍️</div><div class="qa-label">Write Blog Post</div></div>
+          <div class="qa-btn" onclick="showPage('hero',document.querySelectorAll('.nav-item')[3])"><div class="qa-icon">📷</div><div class="qa-label">Update Hero Photo</div></div>
+        </div>
+      </div>
+
+      <div class="page" id="page-portfolio">
+        <div class="section-hdr"><h2>Portfolio Items</h2><button class="add-btn" onclick="openPortfolioModal()">+ Add New Item</button></div>
+        <div class="items-list" id="portfolio-list"></div>
+      </div>
+
+      <div class="page" id="page-blog">
+        <div class="section-hdr"><h2>Blog & Events</h2><button class="add-btn" onclick="openBlogModal()">+ New Post</button></div>
+        <div class="items-list" id="blog-list"></div>
+      </div>
+
+      <div class="page" id="page-hero">
+        <div class="settings-section">
+          <div class="settings-title">📷 Hero Photo</div>
+          <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem">Upload your profile photo. Best size: 800×1000px portrait format.</p>
+          <div class="img-upload-area" onclick="document.getElementById('hero-file').click()">
+            <div id="hero-preview-wrap">
+              <div style="font-size:3rem;margin-bottom:.8rem">👤</div>
+              <div class="img-upload-label">Click to upload photo<br><span>JPG, PNG, WebP up to 10MB</span></div>
+            </div>
+          </div>
+          <input type="file" id="hero-file" accept="image/*" style="display:none" onchange="uploadHeroPhoto(this)">
+          <button class="add-btn" style="margin-top:1.5rem" onclick="document.getElementById('hero-file').click()">📷 Choose Photo</button>
+        </div>
+      </div>
+
+      <div class="page" id="page-settings">
+        <div class="settings-section">
+          <div class="settings-title">🔐 Change Password</div>
+          <div class="form-group"><label class="form-label">Current Password</label><input class="form-input" type="password" id="cur-pass" placeholder="Current password"></div>
+          <div class="form-group"><label class="form-label">New Password</label><input class="form-input" type="password" id="new-pass" placeholder="New password"></div>
+          <div class="form-group"><label class="form-label">Confirm New Password</label><input class="form-input" type="password" id="conf-pass" placeholder="Repeat new password"></div>
+          <button class="add-btn" onclick="changePassword()">Update Password</button>
+        </div>
+        <div class="settings-section">
+          <div class="settings-title">✏️ Edit Site Text</div>
+          <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem">Open your live site in edit mode to double-click and edit any text.</p>
+          <a href="/" target="_blank" class="add-btn" style="text-decoration:none;display:inline-block">✏️ Open Site in Edit Mode</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO MODAL -->
+<div class="modal-overlay" id="port-modal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="port-modal-title">Add Portfolio Item</div><button class="modal-close" onclick="closeModal('port-modal')">×</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="port-id">
+      <div class="form-group"><label class="form-label">Project Title</label><input class="form-input" id="port-title" placeholder="e.g. Luxury Brand Identity"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Category</label><select class="form-select" id="port-cat"><option value="graphic">Graphic Design</option><option value="video">Video Editing</option><option value="web">Web Design</option></select></div>
+        <div class="form-group"><label class="form-label">Emoji Icon</label><input class="form-input" id="port-emoji" placeholder="🎨" maxlength="2"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Description</label><textarea class="form-textarea" id="port-desc" placeholder="Describe this project..."></textarea></div>
+      <div class="form-group"><label class="form-label">Tags (comma separated)</label><input class="form-input" id="port-tags" placeholder="Logo, Branding, Print"></div>
+      <div class="form-group">
+        <label class="form-label">Project Image</label>
+        <div class="img-upload-area" onclick="document.getElementById('port-img-file').click()">
+          <div id="port-img-preview"><div style="font-size:2rem;margin-bottom:.5rem">📁</div><div class="img-upload-label">Click or drag image here<br><span>JPG, PNG, WebP</span></div></div>
+        </div>
+        <input type="file" id="port-img-file" accept="image/*" style="display:none" onchange="previewImage(this,'port-img-preview')">
+      </div>
+      <div class="toggle-row"><span class="toggle-label">Mark as Featured</span><button class="toggle" id="port-featured" onclick="this.classList.toggle('on')"></button></div>
+    </div>
+    <div class="modal-footer"><button class="edit-btn" onclick="closeModal('port-modal')">Cancel</button><button class="add-btn" onclick="savePortfolioItem()">Save Item</button></div>
+  </div>
+</div>
+
+<!-- BLOG MODAL -->
+<div class="modal-overlay" id="blog-modal">
+  <div class="modal">
+    <div class="modal-header"><div class="modal-title" id="blog-modal-title">Write Blog Post</div><button class="modal-close" onclick="closeModal('blog-modal')">×</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="blog-id">
+      <div class="form-group"><label class="form-label">Post Title</label><input class="form-input" id="blog-title" placeholder="Enter your post title..."></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Category</label><select class="form-select" id="blog-cat"><option value="event">Event</option><option value="creative">Creative</option><option value="tips">Design Tips</option><option value="news">News</option></select></div>
+        <div class="form-group"><label class="form-label">Date</label><input class="form-input" type="date" id="blog-date"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Emoji</label><input class="form-input" id="blog-emoji" placeholder="📝" maxlength="2" style="width:120px"></div>
+      <div class="form-group"><label class="form-label">Short Excerpt</label><textarea class="form-textarea" id="blog-excerpt" style="min-height:80px" placeholder="A short summary shown on the blog cards..."></textarea></div>
+      <div class="form-group">
+        <label class="form-label">Cover Image</label>
+        <div class="img-upload-area" onclick="document.getElementById('blog-img-file').click()">
+          <div id="blog-img-preview"><div style="font-size:2rem;margin-bottom:.5rem">📁</div><div class="img-upload-label">Click to upload cover image<br><span>JPG, PNG, WebP</span></div></div>
+        </div>
+        <input type="file" id="blog-img-file" accept="image/*" style="display:none" onchange="previewImage(this,'blog-img-preview')">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Full Post Content</label>
+        <div class="editor-toolbar">
+          <button class="editor-btn" onclick="fmt('bold')"><b>B</b></button>
+          <button class="editor-btn" onclick="fmt('italic')"><i>I</i></button>
+          <button class="editor-btn" onclick="fmt('underline')"><u>U</u></button>
+          <button class="editor-btn" onclick="fmt('insertUnorderedList')">• List</button>
+          <button class="editor-btn" onclick="fmt('insertOrderedList')">1. List</button>
+          <button class="editor-btn" onclick="fmt('formatBlock','h2')">H2</button>
+          <button class="editor-btn" onclick="fmt('formatBlock','p')">¶</button>
+        </div>
+        <div class="editor-area" id="blog-content" contenteditable="true"></div>
+      </div>
+      <div class="toggle-row"><span class="toggle-label">Publish immediately</span><button class="toggle on" id="blog-published" onclick="this.classList.toggle('on')"></button></div>
+    </div>
+    <div class="modal-footer"><button class="edit-btn" onclick="closeModal('blog-modal')">Cancel</button><button class="add-btn" onclick="saveBlogPost()">Publish Post</button></div>
+  </div>
+</div>
+
+<div class="admin-toast" id="admin-toast"></div>
+
+<script>
+let token=localStorage.getItem('dm_token')||'';
+let portfolioData=[],blogData=[];
+
+async function doLogin(){
+  const email=document.getElementById('login-email').value;
+  const pass=document.getElementById('login-pass').value;
+  try{
+    const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password:pass})});
+    const d=await r.json();
+    if(d.token){
+      token=d.token;localStorage.setItem('dm_token',token);
+      document.getElementById('login-screen').style.display='none';
+      document.getElementById('app').classList.add('show');
+      document.getElementById('topbar-user').textContent=email;
+      loadAllData();
+    }else document.getElementById('login-error').style.display='block';
+  }catch{document.getElementById('login-error').style.display='block'}
+}
+
+if(token){document.getElementById('login-screen').style.display='none';document.getElementById('app').classList.add('show');loadAllData();}
+function logout(){localStorage.removeItem('dm_token');token='';location.reload()}
+
+async function loadAllData(){
+  try{
+    const r=await fetch('/api/site',{headers:{'Authorization':'Bearer '+token}});
+    const d=await r.json();
+    portfolioData=d.portfolio||[];blogData=d.blog||[];
+    renderDashboard();renderPortfolioList();renderBlogList();
+    if(d.site&&d.site.heroPhoto) document.getElementById('hero-preview-wrap').innerHTML=`<img src="${d.site.heroPhoto}" style="max-height:200px;border-radius:8px;margin-bottom:.8rem"><br><span style="font-size:.8rem;color:var(--cyan)">Current photo — click to change</span>`;
+  }catch(e){console.log(e)}
+}
+
+function renderDashboard(){
+  document.getElementById('stat-portfolio').textContent=portfolioData.length;
+  document.getElementById('stat-blog').textContent=blogData.length;
+  document.getElementById('stat-published').textContent=blogData.filter(b=>b.published).length;
+  document.getElementById('stat-drafts').textContent=blogData.filter(b=>!b.published).length;
+}
+
+function renderPortfolioList(){
+  const list=document.getElementById('portfolio-list');
+  if(!portfolioData.length){list.innerHTML='<p style="color:var(--muted);padding:2rem 0">No portfolio items yet.</p>';return}
+  list.innerHTML=portfolioData.map(p=>`
+    <div class="item-card">
+      <div class="item-thumb">${p.image?`<img src="${p.image}" alt="${p.title}">`:`<span>${p.emoji||'🎨'}</span>`}</div>
+      <div class="item-info"><div class="item-title">${p.title}</div><div class="item-meta">${p.category}${p.featured?' · ⭐ Featured':''}</div></div>
+      <div class="item-actions">
+        <button class="edit-btn" onclick="editPortfolio('${p.id}')">Edit</button>
+        <button class="del-btn" onclick="deleteItem('portfolio','${p.id}')">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+function renderBlogList(){
+  const list=document.getElementById('blog-list');
+  if(!blogData.length){list.innerHTML='<p style="color:var(--muted);padding:2rem 0">No blog posts yet.</p>';return}
+  list.innerHTML=blogData.map(b=>`
+    <div class="item-card">
+      <div class="item-thumb">${b.image?`<img src="${b.image}" alt="${b.title}">`:`<span>${b.emoji||'📝'}</span>`}</div>
+      <div class="item-info"><div class="item-title">${b.title}</div><div class="item-meta">${b.date} · ${b.category}</div></div>
+      <div class="item-actions">
+        <span class="pub-badge ${b.published?'published':'draft'}">${b.published?'Published':'Draft'}</span>
+        <button class="edit-btn" onclick="editBlog('${b.id}')">Edit</button>
+        <button class="del-btn" onclick="deleteItem('blog','${b.id}')">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+function openPortfolioModal(item){
+  document.getElementById('port-modal-title').textContent=item?'Edit Portfolio Item':'Add Portfolio Item';
+  document.getElementById('port-id').value=item?item.id:'';
+  document.getElementById('port-title').value=item?item.title:'';
+  document.getElementById('port-cat').value=item?item.category:'graphic';
+  document.getElementById('port-emoji').value=item?item.emoji:'🎨';
+  document.getElementById('port-desc').value=item?item.description:'';
+  document.getElementById('port-tags').value=item?(item.tags||[]).join(', '):'';
+  document.getElementById('port-featured').classList.toggle('on',!!(item&&item.featured));
+  document.getElementById('port-img-preview').innerHTML=item&&item.image?`<img src="${item.image}" style="max-height:140px;border-radius:4px;margin-bottom:.5rem"><div class="img-upload-label"><span>Change image</span></div>`:'<div style="font-size:2rem;margin-bottom:.5rem">📁</div><div class="img-upload-label">Click or drag image here<br><span>JPG, PNG, WebP</span></div>';
+  document.getElementById('port-img-file').value='';
+  document.getElementById('port-modal').classList.add('show');
+}
+function editPortfolio(id){openPortfolioModal(portfolioData.find(p=>p.id===id))}
+
+function openBlogModal(item){
+  document.getElementById('blog-modal-title').textContent=item?'Edit Post':'New Blog Post';
+  document.getElementById('blog-id').value=item?item.id:'';
+  document.getElementById('blog-title').value=item?item.title:'';
+  document.getElementById('blog-cat').value=item?item.category:'event';
+  document.getElementById('blog-date').value=item?item.date:new Date().toISOString().split('T')[0];
+  document.getElementById('blog-emoji').value=item?item.emoji:'📝';
+  document.getElementById('blog-excerpt').value=item?item.excerpt:'';
+  document.getElementById('blog-content').innerHTML=item?item.content:'';
+  document.getElementById('blog-published').classList.toggle('on',item?item.published:true);
+  document.getElementById('blog-img-preview').innerHTML=item&&item.image?`<img src="${item.image}" style="max-height:140px;border-radius:4px;margin-bottom:.5rem"><div class="img-upload-label"><span>Change image</span></div>`:'<div style="font-size:2rem;margin-bottom:.5rem">📁</div><div class="img-upload-label">Click to upload<br><span>JPG, PNG, WebP</span></div>';
+  document.getElementById('blog-img-file').value='';
+  document.getElementById('blog-modal').classList.add('show');
+}
+function editBlog(id){openBlogModal(blogData.find(b=>b.id===id))}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+
+async function savePortfolioItem(){
+  const id=document.getElementById('port-id').value;
+  const fd=new FormData();
+  fd.append('title',document.getElementById('port-title').value);
+  fd.append('category',document.getElementById('port-cat').value);
+  fd.append('emoji',document.getElementById('port-emoji').value);
+  fd.append('description',document.getElementById('port-desc').value);
+  fd.append('tags',JSON.stringify(document.getElementById('port-tags').value.split(',').map(t=>t.trim()).filter(Boolean)));
+  fd.append('featured',document.getElementById('port-featured').classList.contains('on'));
+  const file=document.getElementById('port-img-file').files[0];
+  if(file)fd.append('image',file);
+  const r=await fetch(id?`/api/portfolio/${id}`:'/api/portfolio',{method:id?'PUT':'POST',headers:{'Authorization':'Bearer '+token},body:fd});
+  if(r.ok){showAdminToast('✅ Saved!');closeModal('port-modal');await loadAllData()}
+  else showAdminToast('❌ Save failed',false);
+}
+
+async function saveBlogPost(){
+  const id=document.getElementById('blog-id').value;
+  const fd=new FormData();
+  fd.append('title',document.getElementById('blog-title').value);
+  fd.append('category',document.getElementById('blog-cat').value);
+  fd.append('date',document.getElementById('blog-date').value);
+  fd.append('emoji',document.getElementById('blog-emoji').value);
+  fd.append('excerpt',document.getElementById('blog-excerpt').value);
+  fd.append('content',document.getElementById('blog-content').innerHTML);
+  fd.append('published',document.getElementById('blog-published').classList.contains('on'));
+  const file=document.getElementById('blog-img-file').files[0];
+  if(file)fd.append('image',file);
+  const r=await fetch(id?`/api/blog/${id}`:'/api/blog',{method:id?'PUT':'POST',headers:{'Authorization':'Bearer '+token},body:fd});
+  if(r.ok){showAdminToast('✅ Published!');closeModal('blog-modal');await loadAllData()}
+  else showAdminToast('❌ Failed',false);
+}
+
+async function deleteItem(type,id){
+  if(!confirm('Delete this item? This cannot be undone.'))return;
+  const r=await fetch(`/api/${type}/${id}`,{method:'DELETE',headers:{'Authorization':'Bearer '+token}});
+  if(r.ok){showAdminToast('🗑️ Deleted');await loadAllData()}
+}
+
+async function uploadHeroPhoto(input){
+  const file=input.files[0];if(!file)return;
+  const fd=new FormData();fd.append('image',file);
+  const r=await fetch('/api/upload',{method:'POST',headers:{'Authorization':'Bearer '+token},body:fd});
+  const d=await r.json();
+  if(d.url){
+    await fetch('/api/site',{method:'PUT',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({heroPhoto:d.url})});
+    document.getElementById('hero-preview-wrap').innerHTML=`<img src="${d.url}" style="max-height:200px;border-radius:8px;margin-bottom:.8rem"><br><span style="font-size:.8rem;color:var(--cyan)">Updated ✅ — click to change</span>`;
+    showAdminToast('✅ Hero photo updated!');
+  }else showAdminToast('❌ Upload failed',false);
+}
+
+async function changePassword(){
+  const cur=document.getElementById('cur-pass').value;
+  const neu=document.getElementById('new-pass').value;
+  const conf=document.getElementById('conf-pass').value;
+  if(neu!==conf){showAdminToast('❌ Passwords don\'t match',false);return}
+  if(neu.length<6){showAdminToast('❌ Min 6 characters',false);return}
+  const r=await fetch('/api/auth/change-password',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({currentPassword:cur,newPassword:neu})});
+  if(r.ok)showAdminToast('✅ Password changed!');
+  else showAdminToast('❌ Wrong current password',false);
+}
+
+function showPage(id,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  el.classList.add('active');
+  document.getElementById('page-title').textContent=el.textContent.trim();
+}
+
+function previewImage(input,previewId){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{document.getElementById(previewId).innerHTML=`<img src="${e.target.result}" style="max-height:140px;border-radius:4px;margin-bottom:.5rem"><div class="img-upload-label"><span>Change image</span></div>`};
+  reader.readAsDataURL(file);
+}
+
+function fmt(cmd,val){document.execCommand(cmd,false,val||null)}
+
+function showAdminToast(msg,ok=true){
+  const t=document.getElementById('admin-toast');t.textContent=msg;
+  t.className='admin-toast '+(ok?'ok':'err')+' show';
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show')}));
+</script>
+</body>
+</html>

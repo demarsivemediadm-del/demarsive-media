@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Augustine Ackah | Demarsive Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;min-width:0}
+img{max-width:100%}
+:root{--bg:#1a1a1f;--bg2:#222228;--bg3:#16161b;--cyan:#00c8d4;--white:#f4f4f8;--muted:#8a8a9a;--border:rgba(255,255,255,.08);--card:rgba(255,255,255,.04)}
+html{scroll-behavior:smooth;overflow-x:hidden;width:100%}
+body{background:var(--bg);color:var(--white);font-family:'Poppins',sans-serif;overflow-x:hidden;width:100%}
+#cur{position:fixed;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);box-shadow:0 0 12px var(--cyan)}
+#cur2{position:fixed;width:30px;height:30px;border:1.5px solid rgba(0,200,212,.45);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .14s ease-out}
+#cvs{position:fixed;inset:0;z-index:0;opacity:.45;pointer-events:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;border-bottom:1.5px solid var(--cyan);background:rgba(26,26,31,.92);backdrop-filter:blur(14px)}
+.logo{font-size:1.2rem;font-weight:700;color:var(--white);letter-spacing:1px}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--white);text-decoration:none;font-size:.88rem;font-weight:500;transition:.25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--cyan);transition:.3s}
+.nav-links a:hover{color:var(--cyan)}.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.nav-hire{padding:.5rem 1.4rem;border:1.5px solid var(--cyan);color:var(--cyan);font-size:.8rem;font-weight:600;text-decoration:none;transition:.3s}
+.nav-hire:hover{background:var(--cyan);color:#000}
+/* EDIT MODE BANNER */
+#edit-banner{display:none;position:fixed;top:68px;left:0;right:0;z-index:190;background:var(--cyan);color:#000;text-align:center;padding:.6rem;font-size:.85rem;font-weight:600;gap:1rem;align-items:center;justify-content:center}
+#edit-banner.on{display:flex}
+.save-all-btn{padding:.3rem 1.2rem;background:#000;color:var(--cyan);border:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;border-radius:2px}
+.save-all-btn:hover{background:#222}
+/* EDITABLE elements */
+[contenteditable="true"]{outline:2px dashed rgba(0,200,212,.5);outline-offset:-2px;border-radius:2px;cursor:text;min-width:10px;transition:outline .2s}
+[contenteditable="true"]:focus{outline:2px solid var(--cyan);background:rgba(0,200,212,.06)}
+section{position:relative;z-index:10}
+/* HERO */
+#hero{min-height:100vh;padding-top:68px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;background:var(--bg3)}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 5rem 4rem}
+.hero-tag{font-size:.75rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:1.4rem;opacity:0;animation:fadeUp .7s .2s forwards}
+.hero-title{font-size:clamp(2.6rem,4.5vw,4rem);font-weight:800;line-height:1.12;color:var(--white);margin-bottom:.5rem;opacity:0;animation:fadeUp .7s .35s forwards}
+.hero-brand{font-size:clamp(1rem,2vw,1.5rem);font-weight:600;color:var(--cyan);margin-bottom:1.8rem;letter-spacing:1px;opacity:0;animation:fadeUp .7s .5s forwards}
+.hero-desc{font-size:.97rem;color:var(--muted);line-height:1.9;max-width:440px;margin-bottom:.9rem;opacity:0;animation:fadeUp .7s .65s forwards}
+.hero-tagline{font-size:.95rem;font-weight:600;color:var(--white);margin-bottom:2.5rem;opacity:0;animation:fadeUp .7s .8s forwards}
+.hero-roles{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.8rem;opacity:0;animation:fadeUp .7s .9s forwards}
+.role-chip{padding:.35rem 1rem;border:1px solid rgba(0,200,212,.3);color:rgba(0,200,212,.85);font-size:.75rem;font-weight:500;background:rgba(0,200,212,.05);border-radius:2px}
+.hero-btns{display:flex;gap:1.2rem;opacity:0;animation:fadeUp .7s 1s forwards}
+.btn-primary{padding:.85rem 2.2rem;background:var(--cyan);color:#000;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;text-decoration:none;transition:.3s;display:inline-block}
+.btn-primary:hover{background:#00a8b5}
+.btn-outline{padding:.85rem 2.2rem;border:1.5px solid rgba(255,255,255,.25);color:var(--white);font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:600;text-decoration:none;transition:.3s;display:inline-block}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.06)}
+.hero-right{position:relative;overflow:hidden;min-height:600px;background:#111115;height:100%}
+.hero-photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg3) 0%,transparent 35%);z-index:1;pointer-events:none}
+/* photo upload overlay */
+.photo-upload-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(0,0,0,.7);z-index:5;opacity:0;transition:.3s;cursor:pointer}
+.hero-right:hover .photo-upload-overlay.edit-mode{opacity:1}
+.photo-upload-overlay span{font-size:.85rem;font-weight:600;color:var(--cyan);letter-spacing:2px}
+.photo-upload-icon{font-size:3rem}
+.hero-stat-chips{position:absolute;bottom:2.5rem;right:2rem;z-index:2;display:flex;flex-direction:column;gap:.8rem;opacity:0;animation:fadeLeft 1s 1.2s forwards}
+.hstat{background:rgba(26,26,31,.85);border:1px solid rgba(0,200,212,.2);backdrop-filter:blur(10px);padding:.9rem 1.4rem;display:flex;align-items:center;gap:.9rem}
+.hstat-num{font-size:1.5rem;font-weight:800;color:var(--cyan)}.hstat-label{font-size:.7rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+.section-wrap{max-width:1240px;margin:0 auto;padding:0 4rem}
+.section-pad{padding:7rem 0}
+.sec-tag{font-size:.7rem;font-weight:600;letter-spacing:5px;text-transform:uppercase;color:var(--cyan);margin-bottom:.8rem}
+.sec-title{font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:800;color:var(--white);line-height:1.15;margin-bottom:.7rem}
+.sec-divider{width:50px;height:2.5px;background:var(--cyan);margin-bottom:3rem}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+/* ABOUT */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.about-text p{font-size:.95rem;color:rgba(244,244,248,.72);line-height:1.95;margin-bottom:1.1rem}
+.about-text strong{color:var(--white);font-weight:600}
+.about-skills{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:0}
+.ask-pill{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.1rem;border:1px solid var(--border);background:var(--card);transition:.3s;border-radius:2px}
+.ask-pill:hover{border-color:rgba(0,200,212,.25);background:rgba(0,200,212,.06)}
+.ask-pill-icon{font-size:1.3rem}.ask-pill-name{font-size:.85rem;font-weight:500}
+.about-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:3rem}
+.about-stat{border-left:3px solid var(--cyan);padding:.8rem 1.2rem;background:var(--card)}
+.about-stat-num{font-size:2rem;font-weight:800;color:var(--white)}
+.about-stat-label{font-size:.75rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:.2rem}
+/* PORTFOLIO */
+#portfolio{background:var(--bg)}
+.port-tabs{display:flex;gap:.5rem;margin-bottom:3rem;flex-wrap:wrap}
+.ptab{padding:.5rem 1.4rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;transition:.3s}
+.ptab.active,.ptab:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,200,212,.06)}
+.port-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.port-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:.4s;border-radius:4px;position:relative}
+.port-card:hover{border-color:rgba(0,200,212,.3);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+/* image upload on portfolio card */
+.port-img-wrap{position:relative;height:320px;overflow:hidden;cursor:pointer;background:#0d0d10}
+.port-img-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(18px) brightness(.5);transform:scale(1.2)}
+.port-thumb{position:relative;width:100%;height:100%;object-fit:contain;display:block;z-index:1}
+.port-thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2)}
+.port-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;opacity:0;transition:.3s}
+.port-card:hover .port-img-overlay.edit-mode{opacity:1}
+.port-img-overlay span{font-size:.75rem;color:var(--cyan);font-weight:600;letter-spacing:1px}
+.port-body{padding:1.3rem}
+.port-cat{font-size:.65rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.port-name{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.5rem;line-height:1.4}
+.port-desc{font-size:.82rem;color:var(--muted);line-height:1.75}
+.port-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.ptag{padding:.2rem .7rem;background:rgba(0,200,212,.06);border:1px solid rgba(0,200,212,.18);font-size:.68rem;font-weight:500;color:var(--cyan);border-radius:2px}
+/* SKILLS */
+#skills{background:var(--bg2)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.sk-card{background:var(--card);border:1px solid var(--border);padding:2rem 1.8rem;transition:.4s;position:relative;overflow:hidden;border-radius:4px}
+.sk-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2.5px;background:var(--cyan);transition:.4s}
+.sk-card:hover{border-color:rgba(0,200,212,.25)}.sk-card:hover::after{width:100%}
+.sk-icon{font-size:2rem;margin-bottom:1rem}.sk-title{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:.6rem}
+.sk-desc{font-size:.82rem;color:var(--muted);line-height:1.75;margin-bottom:1.3rem}
+.sk-bar-label{display:flex;justify-content:space-between;font-size:.72rem;font-weight:500;color:var(--muted);margin-bottom:.4rem}
+.sk-bar{height:2.5px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
+.sk-fill{height:100%;background:var(--cyan);border-radius:2px;width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
+/* TOOLS */
+#toolbox{background:var(--bg)}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.tool-card{border-radius:12px;padding:2rem 1.8rem;transition:.4s}
+.tool-card:hover{transform:translateY(-5px) scale(1.02)}
+.tc-yellow{background:#c8f000;color:#111}.tc-red{background:#e8503a;color:#fff}.tc-purple{background:#7c3aed;color:#fff}.tc-teal{background:#0891b2;color:#fff}.tc-orange{background:#ea580c;color:#fff}.tc-green{background:#16a34a;color:#fff}
+.tool-icon{font-size:2rem;margin-bottom:.8rem}.tool-name{font-size:1.1rem;font-weight:800;margin-bottom:.5rem}.tool-desc{font-size:.85rem;opacity:.8;line-height:1.7}
+/* EXPERIENCE */
+#experience{background:var(--bg2)}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
+.timeline{border-left:2px solid rgba(0,200,212,.2);padding-left:2.5rem}
+.titem{position:relative;margin-bottom:2.8rem}
+.titem::before{content:'';position:absolute;left:-2.9rem;top:.5rem;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.ti-year{font-size:.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
+.ti-role{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:.25rem}
+.ti-company{font-size:.85rem;font-weight:500;color:var(--cyan);margin-bottom:.6rem}
+.ti-desc{font-size:.85rem;color:var(--muted);line-height:1.85}
+.ind-section h4{font-size:.7rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem}
+.ind-wrap{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem}
+.ind-chip{padding:.35rem .9rem;border:1px solid rgba(255,255,255,.1);font-size:.78rem;font-weight:500;color:var(--muted);border-radius:2px;transition:.3s}
+.ind-chip:hover{border-color:rgba(0,200,212,.3);color:var(--cyan)}
+.str-chip{padding:.35rem .9rem;border:1px solid rgba(0,200,212,.18);font-size:.78rem;font-weight:500;color:rgba(0,200,212,.8);background:rgba(0,200,212,.05);border-radius:2px}
+/* TESTIMONIALS */
+#testimonials{background:var(--bg)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.tcard{padding:2rem;border-radius:14px;transition:.4s}
+.tcard:hover{transform:translateY(-5px) scale(1.015)}
+.tc-blue{background:linear-gradient(140deg,#67e8f9,#22d3ee)}.tc-purple2{background:linear-gradient(140deg,#c084fc,#a855f7)}.tc-amber{background:linear-gradient(140deg,#fde68a,#fbbf24)}
+.tcard-q{font-size:2.2rem;line-height:1;opacity:.3;margin-bottom:.4rem}
+.tcard-stars{font-size:.9rem;margin-bottom:.7rem;opacity:.7}
+.tcard-text{font-size:.9rem;line-height:1.85;margin-bottom:1.4rem;color:rgba(10,10,20,.82)}
+.tcard-name{font-size:.88rem;font-weight:700;color:rgba(10,10,20,.9)}.tcard-role{font-size:.75rem;color:rgba(10,10,20,.55);margin-top:.25rem}
+/* BLOG */
+#blog{background:var(--bg2)}
+.blog-header-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem}
+.blog-cats{display:flex;gap:.5rem;flex-wrap:wrap}
+.bcat{padding:.4rem 1rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;transition:.3s;border-radius:2px}
+.bcat.active,.bcat:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,200,212,.06)}
+.blog-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.blog-grid-2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.bcard{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:.4s;cursor:pointer;border-radius:4px}
+.bcard:hover{border-color:rgba(0,200,212,.3);transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.3)}
+.bcard.featured .bthumb{height:200px}
+.bthumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;overflow:hidden}
+.bthumb img{width:100%;height:100%;object-fit:cover}
+.bthumb-label{position:absolute;top:.8rem;left:.8rem;padding:.3rem .8rem;font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;border-radius:2px}
+.label-event{background:rgba(0,200,212,.9);color:#000}.label-creative{background:rgba(168,85,247,.9);color:#fff}.label-news{background:rgba(251,146,60,.9);color:#000}.label-tips{background:rgba(34,197,94,.9);color:#000}
+.bcontent{padding:1.3rem;flex:1;display:flex;flex-direction:column}
+.bdate{font-size:.68rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.btitle{font-size:.95rem;font-weight:700;color:var(--white);line-height:1.5;margin-bottom:.5rem}
+.bcard.featured .btitle{font-size:1.15rem}
+.bexcerpt{font-size:.82rem;color:var(--muted);line-height:1.75;flex:1}
+.bread{margin-top:.9rem;font-size:.75rem;font-weight:600;color:var(--cyan);letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+/* CONTACT */
+#contact{background:var(--bg)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem}
+.contact-cta{border-radius:12px;padding:2.5rem;background:linear-gradient(135deg,rgba(0,200,212,.08),rgba(168,85,247,.08));border:1px solid rgba(0,200,212,.15);margin-bottom:2rem}
+.contact-cta h3{font-size:1.5rem;font-weight:700;margin-bottom:.8rem;line-height:1.3}
+.contact-cta p{font-size:.9rem;color:var(--muted);line-height:1.8}
+.clinks{display:flex;flex-direction:column;gap:.8rem}
+.clink{display:flex;align-items:center;gap:1rem;padding:.9rem 1.1rem;border:1px solid var(--border);background:var(--card);transition:.3s;border-radius:2px}
+.clink:hover{border-color:rgba(0,200,212,.25);background:rgba(0,200,212,.06);transform:translateX(5px)}
+.clink-icon{font-size:1.2rem;color:var(--cyan)}
+.clink-info strong{display:block;font-size:.88rem;font-weight:600;color:var(--white)}
+.clink-info span{font-size:.8rem;color:var(--muted)}
+.cform{display:flex;flex-direction:column;gap:1.2rem}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.cf-group{display:flex;flex-direction:column;gap:.4rem}
+.cf-label{font-size:.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--cyan)}
+.cf-input,.cf-select,.cf-textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:.85rem 1.1rem;color:var(--white);font-family:'Poppins',sans-serif;font-size:.88rem;transition:.3s;outline:none;border-radius:2px;width:100%}
+.cf-input:focus,.cf-textarea:focus{border-color:var(--cyan)}
+.cf-textarea{min-height:120px;resize:vertical}
+.cf-input::placeholder,.cf-textarea::placeholder{color:var(--muted)}
+.cf-select option{background:#222228}
+/* FOOTER */
+footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid var(--border);padding:3rem 4rem}
+.footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem}
+.footer-brand{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.8rem}
+.footer-desc{font-size:.83rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
+.footer-socials{display:flex;gap:1rem}
+.fsoc{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--muted);transition:.3s;text-decoration:none;border-radius:2px}
+.fsoc:hover{border-color:var(--cyan);color:var(--cyan)}
+.footer-col h4{font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:1.2rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul li a{font-size:.85rem;color:var(--muted);text-decoration:none;transition:.25s}
+.footer-col ul li a:hover{color:var(--cyan)}
+.footer-bottom{max-width:1240px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between}
+.footer-bottom p{font-size:.8rem;color:var(--muted)}
+#btt{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border:1.5px solid var(--cyan);background:rgba(26,26,31,.9);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;z-index:300;transition:.3s;opacity:0;border-radius:2px;text-decoration:none}
+#btt.show{opacity:1}
+#btt:hover{background:var(--cyan);color:#000}
+/* TOAST */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:#222;border:1px solid var(--cyan);color:var(--white);padding:.8rem 1.6rem;border-radius:4px;font-size:.85rem;font-weight:500;z-index:9999;transition:.4s;opacity:0}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── MOBILE MENU TOGGLE (hidden on desktop) ── */
+.menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem;z-index:250}
+.menu-toggle span{width:24px;height:2px;background:var(--white);transition:.3s;display:block}
+.menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.open span:nth-child(2){opacity:0}
+.menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — TABLET (≤1024px)
+   ══════════════════════════════════════ */
+@media (max-width:1024px){
+  .section-wrap{padding:0 2.5rem}
+  nav{padding:0 2.5rem}
+  .hero-left{padding:4rem 2.5rem}
+  .about-grid,.exp-grid,.contact-grid{gap:3rem}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  .skills-grid,.tools-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-grid{grid-template-columns:1fr 1fr}
+  .blog-grid-2{grid-template-columns:repeat(2,1fr)}
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — MOBILE (≤768px)
+   ══════════════════════════════════════ */
+@media (max-width:768px){
+  body{overflow-x:hidden}
+  .section-wrap{padding:0 1.5rem}
+  .section-pad{padding:4rem 0}
+  nav{padding:0 1.2rem;height:60px}
+  .logo{font-size:1.05rem}
+  .nav-right .nav-hire{display:none}
+  .menu-toggle{display:flex}
+  .nav-links{position:fixed;top:60px;left:0;right:0;background:var(--bg2);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .35s ease;border-bottom:1px solid var(--border);z-index:199}
+  .nav-links.open{max-height:400px}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:1rem 1.5rem;border-bottom:1px solid var(--border);font-size:.95rem}
+  .nav-links a::after{display:none}
+
+  /* HERO */
+  #hero{grid-template-columns:1fr;padding-top:60px}
+  .hero-left{padding:2.5rem 1.5rem 2rem;order:2}
+  .hero-right{order:1;min-height:340px;height:340px}
+  .hero-photo-placeholder,#hero-placeholder{min-height:340px}
+  .hero-title{font-size:2.1rem}
+  .hero-brand{font-size:1rem}
+  .hero-desc{font-size:.88rem;max-width:100%}
+  .hero-roles{gap:.5rem}
+  .role-chip{font-size:.7rem;padding:.3rem .8rem}
+  .hero-btns{flex-direction:column;gap:.8rem;width:100%}
+  .btn-primary,.btn-outline{text-align:center;width:100%}
+  .hero-stat-chips{position:static;flex-direction:row;flex-wrap:wrap;margin-top:1rem;padding:0 1.5rem 1.5rem;animation:none;opacity:1}
+  .hstat{padding:.6rem 1rem;flex:1;min-width:90px;justify-content:center}
+  .hstat-num{font-size:1.2rem}
+
+  /* SECTIONS COMMON */
+  .sec-title{font-size:1.6rem}
+  .sec-sub{font-size:.88rem}
+
+  /* ABOUT */
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-skills{grid-template-columns:1fr 1fr;gap:.6rem}
+  .about-stats{grid-template-columns:1fr 1fr}
+
+  /* PORTFOLIO */
+  .port-tabs{gap:.4rem}
+  .ptab{font-size:.75rem;padding:.4rem 1rem}
+  .port-grid{grid-template-columns:1fr}
+  .port-img-wrap{height:260px}
+
+  /* SKILLS / TOOLS / TESTIMONIALS */
+  .skills-grid,.tools-grid,.testi-grid{grid-template-columns:1fr}
+
+  /* EXPERIENCE */
+  .exp-grid{grid-template-columns:1fr;gap:2.5rem}
+  .timeline{padding-left:2rem}
+  .titem::before{left:-2.4rem}
+
+  /* BLOG */
+  .blog-header-row{flex-direction:column;align-items:flex-start;gap:1.2rem}
+  .blog-cats{width:100%}
+  .blog-grid,.blog-grid-2{grid-template-columns:1fr}
+  .bcard.featured .bthumb{height:160px}
+
+  /* CONTACT */
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .cf-row{grid-template-columns:1fr}
+
+  /* FOOTER */
+  .footer-inner{grid-template-columns:1fr;gap:2rem}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
+
+  #btt{bottom:1.2rem;right:1.2rem;width:40px;height:40px}
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE (≤420px)
+   ══════════════════════════════════════ */
+@media (max-width:420px){
+  .hero-title{font-size:1.7rem}
+  .sec-title{font-size:1.35rem}
+  .about-skills{grid-template-columns:1fr}
+  .hstat{min-width:75px;padding:.5rem .7rem}
+  .hstat-num{font-size:1rem}
+  .hstat-label{font-size:.6rem}
+}
+</style>
+</head>
+
+<body>
+<div id="cur"></div><div id="cur2"></div>
+<canvas id="cvs"></canvas>
+
+<!-- EDIT BANNER -->
+<div id="edit-banner">
+  ✏️ Edit Mode — double-click any text or click images to change them
+  <button class="save-all-btn" onclick="saveAllText()">💾 Save All Changes</button>
+  <button class="save-all-btn" style="background:#c00;color:#fff" onclick="exitEditMode()">✕ Exit Edit Mode</button>
+</div>
+
+<nav>
+  <div class="logo">Demarsive</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#hero" onclick="closeMenu()">Home</a></li>
+    <li><a href="#portfolio" onclick="closeMenu()">Portfolio</a></li>
+    <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+    <li><a href="#experience" onclick="closeMenu()">Resume</a></li>
+    <li><a href="#blog" onclick="closeMenu()">Blog</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#contact" class="nav-hire">Hire Me</a>
+  </div>
+  <button class="menu-toggle" id="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">◈ Digital Creative — Based in Ghana</div>
+    <h1 class="hero-title" id="txt-heroName" data-field="heroName">Augustine Ackah</h1>
+    <div class="hero-brand" id="txt-heroBrand" data-field="heroBrand">// Demarsive Media</div>
+    <p class="hero-desc" id="txt-heroDesc" data-field="heroDesc">Hi, I'm Augustine, the creative mind behind Demarsive Media. I help businesses stand out through modern design, branding, and digital experiences.</p>
+    <p class="hero-tagline" id="txt-heroTagline" data-field="heroTagline">We Build Brands That People Remember.</p>
+    <div class="hero-roles">
+      <span class="role-chip">Web Designer</span><span class="role-chip">Graphic Designer</span>
+      <span class="role-chip">Video Editor</span><span class="role-chip">Motion Graphics</span>
+      <span class="role-chip">UI/UX</span><span class="role-chip">Digital Marketing</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#portfolio" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right" id="hero-photo-wrap">
+    <img src="" class="hero-photo" id="hero-img" style="display:none" alt="Augustine Ackah">
+    <div id="hero-placeholder" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:#111115">
+      <div style="font-size:5rem">👤</div>
+      <div style="font-size:.8rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase">Your Photo Here</div>
+      <div style="font-size:.75rem;color:rgba(0,200,212,.6);text-align:center;padding:0 2rem">Log in to admin panel to upload your photo</div>
+    </div>
+    <div class="photo-upload-overlay" id="photo-overlay">
+      <div class="photo-upload-icon">📷</div>
+      <span>CLICK TO CHANGE PHOTO</span>
+    </div>
+    <div class="hero-stat-chips">
+      <div class="hstat"><div class="hstat-num">4+</div><div class="hstat-label">Years Exp</div></div>
+      <div class="hstat"><div class="hstat-num">50+</div><div class="hstat-label">Projects</div></div>
+      <div class="hstat"><div class="hstat-num">10+</div><div class="hstat-label">Industries</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about"><div class="section-wrap section-pad">
+  <div class="about-grid reveal">
+    <div>
+      <div class="sec-tag">◈ 01 — Who I Am</div>
+      <h2 class="sec-title">About Me</h2>
+      <div class="sec-divider"></div>
+      <div class="about-text">
+        <p id="txt-aboutText1" data-field="aboutText1">I'm <strong>Augustine Ackah</strong>, an IT professional and digital creative based in <strong>Accra, Ghana</strong>. With over 4 years of experience, I combine technical skills with creative design to deliver high-quality digital solutions.</p>
+        <p id="txt-aboutText2" data-field="aboutText2">As the founder of <strong>Demarsive Media</strong>, my goal is to build a strong personal brand while helping businesses improve their online presence through design, technology, and digital marketing.</p>
+      </div>
+      <div class="about-stats">
+        <div class="about-stat"><div class="about-stat-num">4+</div><div class="about-stat-label">Years Experience</div></div>
+        <div class="about-stat"><div class="about-stat-num">50+</div><div class="about-stat-label">Projects Done</div></div>
+        <div class="about-stat"><div class="about-stat-num">10+</div><div class="about-stat-label">Industries</div></div>
+        <div class="about-stat"><div class="about-stat-num">100%</div><div class="about-stat-label">Client Focus</div></div>
+      </div>
+    </div>
+    <div class="about-skills">
+      <div class="ask-pill"><span class="ask-pill-icon">🎨</span><span class="ask-pill-name">Graphic Design</span></div>
+      <div class="ask-pill"><span class="ask-pill-icon">💻</span><span class="ask-pill-name">Web Design</span></div>
+      <div class="ask-pill"><span class="ask-pill-icon">🎬</span><span class="ask-pill-name">Video Editing</span></div>
+      <div class="ask-pill"><span class="ask-pill-icon">✨</span><span class="ask-pill-name">Motion Graphics</span></div>
+      <div class="ask-pill"><span class="ask-pill-icon">📱</span><span class="ask-pill-name">Social Media</span></div>
+      <div class="ask-pill"><span class="ask-pill-icon">🔷</span><span class="ask-pill-name">UI/UX Figma</span></div>
+      <div class="ask-pill"><span class="ask-pill-icon">📣</span><span class="ask-pill-name">Branding</span></div>
+      <div class="ask-pill"><span class="ask-pill-icon">⚡</span><span class="ask-pill-name">Digital Marketing</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio"><div class="section-wrap section-pad">
+  <div class="reveal">
+    <div class="sec-tag">◈ 02 — Selected Work</div>
+    <h2 class="sec-title">Portfolio</h2>
+    <div class="sec-divider"></div>
+  </div>
+  <div class="port-tabs reveal">
+    <button class="ptab active" onclick="filterPort('all',this)">All Work</button>
+    <button class="ptab" onclick="filterPort('graphic',this)">Graphic Design</button>
+    <button class="ptab" onclick="filterPort('video',this)">Video Editing</button>
+    <button class="ptab" onclick="filterPort('web',this)">Web Design</button>
+  </div>
+  <div class="port-grid reveal" id="port-grid"></div>
+</div></section>
+
+<!-- SKILLS -->
+<section id="skills"><div class="section-wrap section-pad">
+  <div class="reveal"><div class="sec-tag">◈ 03 — Capabilities</div><h2 class="sec-title">My Skills</h2><div class="sec-divider"></div></div>
+  <div class="skills-grid reveal" id="sk-grid">
+    <div class="sk-card"><div class="sk-icon">🎨</div><div class="sk-title">Graphic Design</div><div class="sk-desc">Logo design, brand identity, social media, event flyers, thumbnails, print materials.</div><div class="sk-bar-label"><span>Brand Identity</span><span>95%</span></div><div class="sk-bar"><div class="sk-fill" data-w="95"></div></div></div>
+    <div class="sk-card"><div class="sk-icon">💻</div><div class="sk-title">Web Design & Dev</div><div class="sk-desc">Portfolio sites, landing pages, UI/UX in Figma, responsive frontend implementation.</div><div class="sk-bar-label"><span>Frontend</span><span>85%</span></div><div class="sk-bar"><div class="sk-fill" data-w="85"></div></div></div>
+    <div class="sk-card"><div class="sk-icon">🎬</div><div class="sk-title">Video Editing</div><div class="sk-desc">Cinematic edits, motion graphics, caption animations, reels — DaVinci Resolve.</div><div class="sk-bar-label"><span>Motion</span><span>90%</span></div><div class="sk-bar"><div class="sk-fill" data-w="90"></div></div></div>
+    <div class="sk-card"><div class="sk-icon">📱</div><div class="sk-title">Social Media</div><div class="sk-desc">Content strategy, Instagram creatives, TikTok branding, church media, campaigns.</div><div class="sk-bar-label"><span>Strategy</span><span>88%</span></div><div class="sk-bar"><div class="sk-fill" data-w="88"></div></div></div>
+    <div class="sk-card"><div class="sk-icon">🔷</div><div class="sk-title">UI/UX Design</div><div class="sk-desc">Wireframing, prototyping in Figma, user-centered layouts, modern typography.</div><div class="sk-bar-label"><span>Figma</span><span>87%</span></div><div class="sk-bar"><div class="sk-fill" data-w="87"></div></div></div>
+    <div class="sk-card"><div class="sk-icon">⚡</div><div class="sk-title">Digital Marketing</div><div class="sk-desc">Business ads, forex education content, church campaigns, online presence strategy.</div><div class="sk-bar-label"><span>Digital Strategy</span><span>80%</span></div><div class="sk-bar"><div class="sk-fill" data-w="80"></div></div></div>
+  </div>
+</div></section>
+
+<!-- TOOLBOX -->
+<section id="toolbox"><div class="section-wrap section-pad">
+  <div class="reveal"><div class="sec-tag">◈ 04 — Arsenal</div><h2 class="sec-title">My Toolbox</h2><div class="sec-divider"></div></div>
+  <div class="tools-grid reveal">
+    <div class="tool-card tc-yellow"><div class="tool-icon">🎨</div><div class="tool-name">Figma</div><div class="tool-desc">UI/UX design, prototyping, and design systems — where ideas come to life.</div></div>
+    <div class="tool-card tc-red"><div class="tool-icon">🅰️</div><div class="tool-name">Adobe Suite</div><div class="tool-desc">Photoshop, Illustrator & Premiere Pro for professional-grade creative output.</div></div>
+    <div class="tool-card tc-purple"><div class="tool-icon">🎬</div><div class="tool-name">DaVinci Resolve</div><div class="tool-desc">Primary video editing and color grading for cinematic quality productions.</div></div>
+    <div class="tool-card tc-teal"><div class="tool-icon">💻</div><div class="tool-name">HTML / CSS / JS</div><div class="tool-desc">Core web technologies for building responsive pixel-perfect websites.</div></div>
+    <div class="tool-card tc-orange"><div class="tool-icon">📊</div><div class="tool-name">Social Tools</div><div class="tool-desc">TikTok, Meta Business Suite, Canva Pro for social presence management.</div></div>
+    <div class="tool-card tc-green"><div class="tool-icon">🤖</div><div class="tool-name">AI Tools</div><div class="tool-desc">Leveraging AI to enhance workflow, motion graphics, and content ideation.</div></div>
+  </div>
+</div></section>
+
+<!-- EXPERIENCE -->
+<section id="experience"><div class="section-wrap section-pad">
+  <div class="reveal"><div class="sec-tag">◈ 05 — Journey</div><h2 class="sec-title">Experience</h2><div class="sec-divider"></div></div>
+  <div class="exp-grid reveal">
+    <div class="timeline">
+      <div class="titem"><div class="ti-year">2024 — Present</div><div class="ti-role">Founder & Creative Director</div><div class="ti-company">Demarsive Media · Accra, Ghana</div><div class="ti-desc">Leading a full-service digital creative studio offering graphic design, web development, video production, and social media branding to businesses across Ghana and beyond.</div></div>
+      <div class="titem"><div class="ti-year">2022 — 2024</div><div class="ti-role">Freelance Digital Creative</div><div class="ti-company">Independent · Ghana</div><div class="ti-desc">Delivered high-quality design, video and branding solutions to clients in construction, forex trading, automotive, church and import/export industries.</div></div>
+      <div class="titem"><div class="ti-year">2020 — 2022</div><div class="ti-role">IT Professional & Web Designer</div><div class="ti-company">Various Clients · Ghana</div><div class="ti-desc">Built responsive websites and IT solutions for SMEs. Specialised in UI/UX design using Figma and video editing with DaVinci Resolve.</div></div>
+    </div>
+    <div class="ind-section">
+      <h4>Industries Served</h4>
+      <div class="ind-wrap"><span class="ind-chip">Construction</span><span class="ind-chip">Electrical</span><span class="ind-chip">Import & Export</span><span class="ind-chip">Automotive</span><span class="ind-chip">Forex Education</span><span class="ind-chip">Churches</span><span class="ind-chip">Personal Brands</span><span class="ind-chip">Small Business</span><span class="ind-chip">YouTube Creators</span><span class="ind-chip">Education</span></div>
+      <h4 style="margin-top:2rem">Creative Strengths</h4>
+      <div class="ind-wrap"><span class="str-chip">Visual Storytelling</span><span class="str-chip">Attention to Detail</span><span class="str-chip">Brand-Focused</span><span class="str-chip">Fast Learner</span><span class="str-chip">Modern Aesthetics</span><span class="str-chip">User-Centered</span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials"><div class="section-wrap section-pad">
+  <div class="reveal"><div class="sec-tag">◈ 06 — Reviews</div><h2 class="sec-title">What Clients Say</h2><div class="sec-divider"></div></div>
+  <div class="testi-grid reveal">
+    <div class="tcard tc-blue"><div class="tcard-q">"</div><div class="tcard-stars">★★★★★</div><p class="tcard-text">Augustine delivered an outstanding brand identity for our construction company. Professional and trustworthy — exactly what we needed.</p><div class="tcard-name">Client — Construction Firm</div><div class="tcard-role">Accra, Ghana</div></div>
+    <div class="tcard tc-purple2"><div class="tcard-q">"</div><div class="tcard-stars">★★★★★</div><p class="tcard-text">The forex videos he created increased our engagement dramatically. Creative, cinematic, delivered on time. Highly recommend Demarsive Media.</p><div class="tcard-name">Client — Forex Educator</div><div class="tcard-role">Ghana</div></div>
+    <div class="tcard tc-amber"><div class="tcard-q">"</div><div class="tcard-stars">★★★★★</div><p class="tcard-text">Demarsive Media transformed our church's visual presence. From posters to videos — everything looked incredibly polished.</p><div class="tcard-name">Client — Church Ministry</div><div class="tcard-role">Accra, Ghana</div></div>
+  </div>
+</div></section>
+
+<!-- BLOG -->
+<section id="blog"><div class="section-wrap section-pad">
+  <div class="blog-header-row reveal">
+    <div><div class="sec-tag">◈ 07 — Creative Hub</div><h2 class="sec-title">Blog & Events</h2><div class="sec-divider" style="margin-bottom:0"></div></div>
+    <div class="blog-cats">
+      <button class="bcat active" onclick="filterBlog('all',this)">All</button>
+      <button class="bcat" onclick="filterBlog('event',this)">Events</button>
+      <button class="bcat" onclick="filterBlog('creative',this)">Creatives</button>
+      <button class="bcat" onclick="filterBlog('tips',this)">Design Tips</button>
+      <button class="bcat" onclick="filterBlog('news',this)">News</button>
+    </div>
+  </div>
+  <div id="blog-container" class="reveal"></div>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact"><div class="section-wrap section-pad">
+  <div class="reveal"><div class="sec-tag">◈ 08 — Let's Work</div><h2 class="sec-title">Get In Touch</h2><div class="sec-divider"></div></div>
+  <div class="contact-grid reveal">
+    <div>
+      <div class="contact-cta"><h3>Let's Create Something Amazing!</h3><p>Whether you need a brand identity, a website, a video or a full digital transformation — I'm here to bring your ideas to life.</p></div>
+      <div class="clinks">
+        <div class="clink"><div class="clink-icon">📧</div><div class="clink-info"><strong>Email</strong><span id="txt-email" data-field="email">hello@demarsivemedia.com</span></div></div>
+        <div class="clink"><div class="clink-icon">📍</div><div class="clink-info"><strong>Location</strong><span id="txt-location" data-field="location">Accra, Ghana</span></div></div>
+        <div class="clink"><div class="clink-icon">🌐</div><div class="clink-info"><strong>Social</strong><span id="txt-social" data-field="social">@demarsivemedia</span></div></div>
+        <div class="clink"><div class="clink-icon">🕐</div><div class="clink-info"><strong>Availability</strong><span>Open to projects — Mon to Sat</span></div></div>
+      </div>
+    </div>
+    <form class="cform" onsubmit="submitContact(event)">
+      <div class="cf-row">
+        <div class="cf-group"><label class="cf-label">Full Name</label><input class="cf-input" type="text" placeholder="Your name" required></div>
+        <div class="cf-group"><label class="cf-label">Email</label><input class="cf-input" type="email" placeholder="your@email.com" required></div>
+      </div>
+      <div class="cf-group"><label class="cf-label">Service Needed</label>
+        <select class="cf-select cf-input">
+          <option>Graphic Design / Branding</option><option>Web Design & Development</option>
+          <option>Video Editing / Motion Graphics</option><option>Social Media Branding</option><option>Full Digital Package</option>
+        </select>
+      </div>
+      <div class="cf-group"><label class="cf-label">Message</label><textarea class="cf-textarea" placeholder="Tell me about your project..." required></textarea></div>
+      <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Poppins',sans-serif">Send Message →</button>
+    </form>
+  </div>
+</div></section>
+
+<footer><div class="footer-inner">
+  <div><div class="footer-brand">Demarsive Media</div><div class="footer-desc">A digital creative studio based in Accra, Ghana. Building brands that people remember.</div><div class="footer-socials"><a href="#" class="fsoc">in</a><a href="#" class="fsoc">IG</a><a href="#" class="fsoc">TT</a><a href="#" class="fsoc">YT</a></div></div>
+  <div class="footer-col"><h4>Services</h4><ul><li><a href="#portfolio">Graphic Design</a></li><li><a href="#portfolio">Web Design</a></li><li><a href="#portfolio">Video Editing</a></li><li><a href="#portfolio">Social Media</a></li></ul></div>
+  <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#about">About Me</a></li><li><a href="#experience">Resume</a></li><li><a href="#blog">Blog & Events</a></li><li><a href="#contact">Hire Me</a></li><li><a href="/admin">Admin Panel</a></li></ul></div>
+</div><div class="footer-bottom"><p>© 2025 <span style="color:var(--cyan);font-weight:600">Demarsive Media</span> · Augustine Ackah</p><p style="font-size:.8rem;color:var(--muted)">Accra, Ghana 🇬🇭</p></div></footer>
+
+<a href="#hero" id="btt">↑</a>
+<div class="toast" id="toast"></div>
+<input type="file" id="hidden-file-input" accept="image/*" style="display:none">
+
+<script>
+const API = '';
+let token = localStorage.getItem('dm_token');
+let editMode = false;
+let pendingTextChanges = {};
+let allPortfolio = [];
+let allBlog = [];
+
+// ── CURSOR
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';setTimeout(()=>{cur2.style.left=e.clientX+'px';cur2.style.top=e.clientY+'px'},55)});
+
+// ── CANVAS
+const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');
+function resize(){cvs.width=innerWidth;cvs.height=innerHeight}resize();
+window.addEventListener('resize',resize);
+const pts=Array.from({length:65},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.6+.4,o:Math.random()*.45+.08}));
+(function draw(){ctx.clearRect(0,0,cvs.width,cvs.height);ctx.strokeStyle='rgba(0,200,212,.03)';ctx.lineWidth=.5;for(let x=0;x<cvs.width;x+=70){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,cvs.height);ctx.stroke()}for(let y=0;y<cvs.height;y+=70){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cvs.width,y);ctx.stroke()}pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=cvs.width;if(p.x>cvs.width)p.x=0;if(p.y<0)p.y=cvs.height;if(p.y>cvs.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle=`rgba(0,200,212,${p.o})`;ctx.fill()});pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<100){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(0,200,212,${.06*(1-d/100)})`;ctx.lineWidth=.5;ctx.stroke()}}));requestAnimationFrame(draw)})();
+
+// ── SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.id==='sk-grid'){setTimeout(()=>e.target.querySelectorAll('.sk-fill').forEach(b=>b.style.width=b.dataset.w+'%'),200)}}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── BACK TO TOP
+const btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>{btt.classList.toggle('show',scrollY>400)});
+
+// ── TOAST
+function showToast(msg,ok=true){const t=document.getElementById('toast');t.textContent=msg;t.style.borderColor=ok?'var(--cyan)':'#c00';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+
+// ── LOAD SITE DATA
+async function loadSiteData(){
+  try{
+    const r=await fetch('/api/site');
+    const d=await r.json();
+    // Update text fields
+    Object.entries(d.site).forEach(([k,v])=>{
+      const el=document.querySelector(`[data-field="${k}"]`);
+      if(el)el.textContent=v;
+    });
+    // Hero photo
+    if(d.site.heroPhoto){
+      document.getElementById('hero-img').src=d.site.heroPhoto;
+      document.getElementById('hero-img').style.display='block';
+      document.getElementById('hero-placeholder').style.display='none';
+    }
+    // Portfolio
+    allPortfolio=d.portfolio;
+    renderPortfolio(allPortfolio);
+    // Blog
+    allBlog=d.blog;
+    renderBlog(allBlog);
+  }catch(e){console.log('Offline mode');renderPortfolio([]);renderBlog([])}
+}
+
+// ── RENDER PORTFOLIO
+function renderPortfolio(items){
+  const grid=document.getElementById('port-grid');
+  if(!items.length){grid.innerHTML='<p style="color:var(--muted);padding:2rem 0">No portfolio items yet. Add some from the admin panel!</p>';return}
+  grid.innerHTML=items.map((p,i)=>`
+    <div class="port-card${p.featured&&i===0?' style="grid-column:span 2"':''}" data-cat="${p.category}" data-id="${p.id}">
+      <div class="port-img-wrap" onclick="handlePortImgClick('${p.id}')">
+        ${p.image?`<div class="port-img-bg" style="background-image:url('${p.image}')"></div><img src="${p.image}" class="port-thumb" alt="${p.title}">`:`<div class="port-thumb-placeholder">${p.emoji||'🎨'}</div>`}
+        <div class="port-img-overlay edit-mode"><span>📷 CHANGE IMAGE</span></div>
+      </div>
+      <div class="port-body">
+        <div class="port-cat">${p.category}</div>
+        <div class="port-name">${p.title}</div>
+        <p class="port-desc">${p.description}</p>
+        <div class="port-tags">${(p.tags||[]).map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
+      </div>
+    </div>`).join('');
+}
+
+// ── RENDER BLOG
+function renderBlog(posts){
+  const c=document.getElementById('blog-container');
+  if(!posts.length){c.innerHTML='<p style="color:var(--muted)">No blog posts yet. Write your first post from the admin panel!</p>';return}
+  const rows=[];
+  const chunk1=posts.slice(0,3),chunk2=posts.slice(3,6);
+  if(chunk1.length){
+    rows.push(`<div class="blog-grid" style="margin-bottom:1.5rem">${chunk1.map((p,i)=>`
+      <div class="bcard${i===0?' featured':''}" data-bcat="${p.category}">
+        <div class="bthumb" style="background:linear-gradient(135deg,#1a1a2e,#0d0d1a)">
+          ${p.image?`<img src="${p.image}" alt="${p.title}">`:`<span>${p.emoji||'📝'}</span>`}
+          <div class="bthumb-label label-${p.category}">${p.category}</div>
+        </div>
+        <div class="bcontent">
+          <div class="bdate">${p.date}</div>
+          <div class="btitle">${p.title}</div>
+          <div class="bexcerpt">${p.excerpt}</div>
+          <a href="#" class="bread">Read More →</a>
+        </div>
+      </div>`).join('')}</div>`);
+  }
+  if(chunk2.length){
+    rows.push(`<div class="blog-grid-2">${chunk2.map(p=>`
+      <div class="bcard" data-bcat="${p.category}">
+        <div class="bthumb" style="background:linear-gradient(135deg,#1a1a2e,#0d0d1a)">
+          ${p.image?`<img src="${p.image}" alt="${p.title}">`:`<span>${p.emoji||'📝'}</span>`}
+          <div class="bthumb-label label-${p.category}">${p.category}</div>
+        </div>
+        <div class="bcontent">
+          <div class="bdate">${p.date}</div>
+          <div class="btitle">${p.title}</div>
+          <div class="bexcerpt">${p.excerpt}</div>
+          <a href="#" class="bread">Read More →</a>
+        </div>
+      </div>`).join('')}</div>`);
+  }
+  c.innerHTML=rows.join('');
+}
+
+// ── PORTFOLIO FILTER
+function filterPort(cat,btn){
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered=cat==='all'?allPortfolio:allPortfolio.filter(p=>p.category===cat);
+  renderPortfolio(filtered);
+}
+
+// ── BLOG FILTER
+function filterBlog(cat,btn){
+  document.querySelectorAll('.bcat').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const filtered=cat==='all'?allBlog:allBlog.filter(p=>p.category===cat);
+  renderBlog(filtered);
+}
+
+// ── EDIT MODE (enabled from admin panel via token)
+function checkEditMode(){
+  token=localStorage.getItem('dm_token');
+  if(token){enableEditMode()}
+}
+function enableEditMode(){
+  editMode=true;
+  document.getElementById('edit-banner').classList.add('on');
+  document.body.style.paddingTop='36px';
+  // Make text editable
+  document.querySelectorAll('[data-field]').forEach(el=>{
+    el.contentEditable='true';
+    el.addEventListener('input',()=>{pendingTextChanges[el.dataset.field]=el.textContent});
+  });
+  // Show photo overlays
+  document.getElementById('photo-overlay').classList.add('edit-mode');
+  document.getElementById('hero-photo-wrap').addEventListener('click',()=>triggerPhotoUpload('hero'));
+  document.querySelectorAll('.port-img-overlay').forEach(o=>o.classList.add('edit-mode'));
+}
+function exitEditMode(){
+  editMode=false;
+  document.getElementById('edit-banner').classList.remove('on');
+  document.body.style.paddingTop='0';
+  document.querySelectorAll('[data-field]').forEach(el=>el.contentEditable='false');
+}
+async function saveAllText(){
+  if(!Object.keys(pendingTextChanges).length){showToast('Nothing changed yet!');return}
+  try{
+    const r=await fetch('/api/site',{method:'PUT',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify(pendingTextChanges)});
+    if(r.ok){showToast('✅ All changes saved!');pendingTextChanges={}}
+    else showToast('❌ Save failed — please log in again',false);
+  }catch{showToast('❌ Server error',false)}
+}
+
+// ── PHOTO UPLOAD
+function triggerPhotoUpload(type,portId){
+  const input=document.getElementById('hidden-file-input');
+  input.onchange=async(e)=>{
+    const file=e.target.files[0];if(!file)return;
+    const fd=new FormData();
+    fd.append('image',file);
+    if(type==='hero'){
+      const r=await fetch('/api/upload',{method:'POST',headers:{'Authorization':'Bearer '+token},body:fd});
+      const d=await r.json();
+      if(d.url){
+        await fetch('/api/site',{method:'PUT',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({heroPhoto:d.url})});
+        document.getElementById('hero-img').src=d.url;
+        document.getElementById('hero-img').style.display='block';
+        document.getElementById('hero-placeholder').style.display='none';
+        showToast('✅ Photo updated!');
+      }
+    } else if(type==='portfolio'&&portId){
+      fd.append('id',portId);
+      const r=await fetch('/api/portfolio/'+portId,{method:'PUT',headers:{'Authorization':'Bearer '+token},body:fd});
+      if(r.ok){showToast('✅ Image updated!');loadSiteData()}
+    }
+    input.value='';
+  };
+  input.click();
+}
+function handlePortImgClick(id){if(editMode)triggerPhotoUpload('portfolio',id)}
+
+// ── CONTACT FORM
+function submitContact(e){e.preventDefault();showToast('✅ Message sent! Augustine will be in touch soon.');e.target.reset()}
+
+// ── MOBILE MENU
+function toggleMenu(){
+  document.getElementById('nav-links').classList.toggle('open');
+  document.getElementById('menu-toggle').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('menu-toggle').classList.remove('open');
+}
+
+// ── INIT
+loadSiteData();
+checkEditMode();
+</script>
+</body>
+</html>
