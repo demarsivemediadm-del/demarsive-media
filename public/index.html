@@ -825,8 +825,13 @@ function closePost(){
   document.body.style.overflow = '';
 }
 // Close on background click
-document.getElementById('post-modal').addEventListener('click', function(e){
-  if(e.target === this) closePost();
+window.addEventListener('load', function(){
+  const postModal = document.getElementById('post-modal');
+  if(postModal){
+    postModal.addEventListener('click', function(e){
+      if(e.target === this) closePost();
+    });
+  }
 });
 // ── INIT
 loadSiteData();
