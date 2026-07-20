@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Augustine Ackah | Demarsive Media</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">   
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;min-width:0}
@@ -451,7 +452,13 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
     <div class="tool-card tc-teal"><div class="tool-icon">💻</div><div class="tool-name">HTML / CSS / JS</div><div class="tool-desc">Core web technologies for building responsive pixel-perfect websites.</div></div>
     <div class="tool-card tc-orange"><div class="tool-icon">📊</div><div class="tool-name">Social Tools</div><div class="tool-desc">TikTok, Meta Business Suite, Canva Pro for social presence management.</div></div>
     <div class="tool-card tc-green"><div class="tool-icon">🤖</div><div class="tool-name">AI Tools</div><div class="tool-desc">Leveraging AI to enhance workflow, motion graphics, and content ideation.</div></div>
-     <div class="tool-card tc-blue2"><div class="tool-icon">🔷</div><div class="tool-name">Affinity Suite</div><div class="tool-desc">Affinity Designer, Photo & Publisher for professional design work without subscriptions.</div>
+   <div class="tool-card tc-blue2">
+  <div class="tool-icon">
+    <i class="fa-solid fa-pen-nib" style="font-size:2rem"></i>
+  </div>
+  <div class="tool-name">Affinity Suite</div>
+  <div class="tool-desc">Affinity Designer, Photo & Publisher for professional design without subscriptions.</div>
+</div>
 </div>
   </div>
 </div></section>
@@ -506,13 +513,13 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
     <div>
       <div class="contact-cta"><h3>Let's Create Something Amazing!</h3><p>Whether you need a brand identity, a website, a video or a full digital transformation — I'm here to bring your ideas to life.</p></div>
       <div class="clinks">
-        <div class="clink"><div class="clink-icon">📧</div><div class="clink-info"><strong>Email</strong><span id="txt-email" data-field="email">hello@demarsivemedia.com</span></div></div>
+        <div class="clink"><div class="clink-icon">📧</div><div class="clink-info"><strong>Email</strong><span id="txt-email" data-field="email">demarsivemediadm@gmail.com</span></div></div>
         <div class="clink"><div class="clink-icon">📍</div><div class="clink-info"><strong>Location</strong><span id="txt-location" data-field="location">Accra, Ghana</span></div></div>
         <div class="clink"><div class="clink-icon">🌐</div><div class="clink-info"><strong>Social</strong><span id="txt-social" data-field="social">@demarsivemedia</span></div></div>
         <div class="clink"><div class="clink-icon">🕐</div><div class="clink-info"><strong>Availability</strong><span>Open to projects — Mon to Sat</span></div></div>
       </div>
     </div>
-    <form class="cform" onsubmit="submitContact(event)">
+    <form class="cform" action="https://formspree.io/f/xojgwdyb" method="POST">
       <div class="cf-row">
         <div class="cf-group"><label class="cf-label">Full Name</label><input class="cf-input" type="text" placeholder="Your name" required></div>
         <div class="cf-group"><label class="cf-label">Email</label><input class="cf-input" type="email" placeholder="your@email.com" required></div>
@@ -524,16 +531,22 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
         </select>
       </div>
       <div class="cf-group"><label class="cf-label">Message</label><textarea class="cf-textarea" placeholder="Tell me about your project..." required></textarea></div>
-      <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Poppins',sans-serif">Send Message →</button>
+     <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Poppins',sans-serif">Send Message →</button>
     </form>
   </div>
 </div></section>
 
 <footer><div class="footer-inner">
-  <div><div class="footer-brand">Demarsive Media</div><div class="footer-desc">A digital creative studio based in Accra, Ghana. Building brands that people remember.</div><div class="footer-socials"><a href="#" class="fsoc">in</a><a href="#" class="fsoc">IG</a><a href="#" class="fsoc">TT</a><a href="#" class="fsoc">YT</a></div></div>
+  <div><div class="footer-brand">Demarsive Media</div><div class="footer-desc">A digital creative studio based in Accra, Ghana. Building brands that people remember.<div class="footer-socials">
+  <a href="https://www.linkedin.com/in/demarsivemediadm" target="_blank" class="fsoc" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+  <a href="https://www.instagram.com/demarsivemedia" target="_blank" class="fsoc" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a href="https://www.tiktok.com/@demarsivemedia" target="_blank" class="fsoc" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+  <a href="https://www.youtube.com/@demarsivemedia" target="_blank" class="fsoc" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+  <a href="https://x.com/augustineackah_" target="_blank" class="fsoc" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+</div>
   <div class="footer-col"><h4>Services</h4><ul><li><a href="#portfolio">Graphic Design</a></li><li><a href="#portfolio">Web Design</a></li><li><a href="#portfolio">Video Editing</a></li><li><a href="#portfolio">Social Media</a></li></ul></div>
   <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#about">About Me</a></li><li><a href="#experience">Resume</a></li><li><a href="#blog">Blog & Events</a></li><li><a href="#contact">Hire Me</a></li><li><a href="/admin">Admin Panel</a></li></ul></div>
-</div><div class="footer-bottom"><p>© 2025 <span style="color:var(--cyan);font-weight:600">Demarsive Media</span> · Augustine Ackah</p><p style="font-size:.8rem;color:var(--muted)">Accra, Ghana 🇬🇭</p></div></footer>
+</div><div class="footer-bottom"><p>© 2021 <span style="color:var(--cyan);font-weight:600">Demarsive Media</span> · Augustine Ackah</p><p style="font-size:.8rem;color:var(--muted)">Accra, Ghana 🇬🇭</p></div></footer>
 
 <a href="#hero" id="btt">↑</a>
 <div class="toast" id="toast"></div>
@@ -731,7 +744,7 @@ function triggerPhotoUpload(type,portId){
 function handlePortImgClick(id){if(editMode)triggerPhotoUpload('portfolio',id)}
 
 // ── CONTACT FORM
-function submitContact(e){e.preventDefault();showToast('✅ Message sent! Augustine will be in touch soon.');e.target.reset()}
+//function submitContact(e){e.preventDefault();showToast('✅ Message sent! Augustine will be in touch soon.');e.target.reset()}
 
 // ── MOBILE MENU
 function toggleMenu(){
