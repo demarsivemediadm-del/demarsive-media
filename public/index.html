@@ -520,21 +520,33 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
       </div>
     </div>
     <form class="cform" action="https://formspree.io/f/xojgwdyb" method="POST">
-      <div class="cf-row">
-        <div class="cf-group"><label class="cf-label">Full Name</label><input class="cf-input" type="text" placeholder="Your name" required></div>
-        <div class="cf-group"><label class="cf-label">Email</label><input class="cf-input" type="email" placeholder="your@email.com" required></div>
-      </div>
-      <div class="cf-group"><label class="cf-label">Service Needed</label>
-        <select class="cf-select cf-input">
-          <option>Graphic Design / Branding</option><option>Web Design & Development</option>
-          <option>Video Editing / Motion Graphics</option><option>Social Media Branding</option><option>Full Digital Package</option>
-        </select>
-      </div>
-      <div class="cf-group"><label class="cf-label">Message</label><textarea class="cf-textarea" placeholder="Tell me about your project..." required></textarea></div>
-     <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Poppins',sans-serif">Send Message →</button>
-    </form>
+  <input type="hidden" name="_next" value="https://demarsive-media-production.up.railway.app">
+  <div class="cf-row">
+    <div class="cf-group">
+      <label class="cf-label">Full Name</label>
+      <input class="cf-input" type="text" name="name" placeholder="Your name" required>
+    </div>
+    <div class="cf-group">
+      <label class="cf-label">Email</label>
+      <input class="cf-input" type="email" name="email" placeholder="your@email.com" required>
+    </div>
   </div>
-</div></section>
+  <div class="cf-group">
+    <label class="cf-label">Service Needed</label>
+    <select class="cf-select cf-input" name="service">
+      <option>Graphic Design / Branding</option>
+      <option>Web Design & Development</option>
+      <option>Video Editing / Motion Graphics</option>
+      <option>Social Media Branding</option>
+      <option>Full Digital Package</option>
+    </select>
+  </div>
+  <div class="cf-group">
+    <label class="cf-label">Message</label>
+    <textarea class="cf-textarea" name="message" placeholder="Tell me about your project..." required></textarea>
+  </div>
+  <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Poppins',sans-serif">Send Message →</button>
+</form>
 
 <footer><div class="footer-inner">
   <div><div class="footer-brand">Demarsive Media</div><div class="footer-desc">A digital creative studio based in Accra, Ghana. Building brands that people remember.<div class="footer-socials">
