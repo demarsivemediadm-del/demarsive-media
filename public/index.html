@@ -619,7 +619,8 @@ async function loadSiteData(){
     allPortfolio=d.portfolio;
     renderPortfolio(allPortfolio);
     // Blog
-    allBlog=d.blog;
+    allBlog = d.blog || [];
+console.log('Blog posts loaded:', allBlog.length);
     renderBlog(allBlog);
   }catch(e){console.log('Offline mode');renderPortfolio([]);renderBlog([])}
 }
