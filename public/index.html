@@ -660,7 +660,7 @@ function renderBlog(posts){
           <div class="bdate">${p.date}</div>
           <div class="btitle">${p.title}</div>
           <div class="bexcerpt">${p.excerpt}</div>
-          <a href="#" class="bread">Read More →</a>
+          <a href="#" class="bread" onclick="openPost('${p.id}');return false;">Read More →</a>
         </div>
       </div>`).join('')}</div>`);
   }
@@ -804,10 +804,46 @@ function closeMenu(){
   document.getElementById('nav-links').classList.remove('open');
   document.getElementById('menu-toggle').classList.remove('open');
 }
-
+// ── BLOG POST READER
+function openPost(id){
+  const post = allBlog.find(p => p.id === id);
+  if(!post) return;
+  const modal = document.getElementById('post-modal');
+  const imgDiv = document.getElementById('post-modal-img');
+  imgDiv.innerHTML = post.image
+    ? `<img src="${post.image}" style="width:100%;height:100%;object-fit:cover">`
+    : `<span>${post.emoji || '📝'}</span>`;
+  document.getElementById('post-modal-cat').textContent = post.category.toUpperCase();
+  document.getElementById('post-modal-title').textContent = post.title;
+  document.getElementById('post-modal-date').textContent = post.date;
+  document.getElementById('post-modal-content').innerHTML = post.content || post.excerpt;
+  modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closePost(){
+  document.getElementById('post-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+// Close on background click
+document.getElementById('post-modal').addEventListener('click', function(e){
+  if(e.target === this) closePost();
+});
 // ── INIT
 loadSiteData();
 checkEditMode();
 </script>
+     <!-- BLOG POST MODAL -->
+<div id="post-modal" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);overflow-y:auto;padding:2rem">
+  <div style="max-width:800px;margin:0 auto;background:#1a1a1f;border:1px solid rgba(0,200,212,.2);border-radius:12px;overflow:hidden">
+    <div id="post-modal-img" style="height:300px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:#0d0d10"></div>
+    <div style="padding:2.5rem">
+      <div id="post-modal-cat" style="font-size:.7rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#00c8d4;margin-bottom:.8rem"></div>
+      <h2 id="post-modal-title" style="font-size:1.8rem;font-weight:800;color:#f4f4f8;margin-bottom:.5rem;line-height:1.3"></h2>
+      <div id="post-modal-date" style="font-size:.8rem;color:#8a8a9a;margin-bottom:2rem"></div>
+      <div id="post-modal-content" style="font-size:.95rem;color:rgba(244,244,248,.75);line-height:1.9"></div>
+      <button onclick="closePost()" style="margin-top:2.5rem;padding:.85rem 2rem;background:#00c8d4;color:#000;border:none;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;border-radius:4px">← Back to Blog</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
