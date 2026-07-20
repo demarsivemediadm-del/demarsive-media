@@ -519,8 +519,7 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
         <div class="clink"><div class="clink-icon">🕐</div><div class="clink-info"><strong>Availability</strong><span>Open to projects — Mon to Sat</span></div></div>
       </div>
     </div>
-    <form class="cform" action="https://formspree.io/f/xojgwdyb" method="POST">
-  <input type="hidden" name="_next" value="https://demarsive-media-production.up.railway.app">
+    <form class="cform" id="contact-form">
   <div class="cf-row">
     <div class="cf-group">
       <label class="cf-label">Full Name</label>
@@ -545,7 +544,13 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
     <label class="cf-label">Message</label>
     <textarea class="cf-textarea" name="message" placeholder="Tell me about your project..." required></textarea>
   </div>
-  <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Poppins',sans-serif">Send Message →</button>
+  <button type="submit" class="btn-primary" id="submit-btn" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Poppins',sans-serif">Send Message →</button>
+  <div id="form-success" style="display:none;margin-top:1rem;padding:1rem 1.5rem;background:rgba(0,200,212,.1);border:1px solid var(--cyan);border-radius:4px;color:var(--cyan);font-size:.9rem;font-weight:600">
+    ✅ Message sent! Augustine will get back to you soon.
+  </div>
+  <div id="form-error" style="display:none;margin-top:1rem;padding:1rem 1.5rem;background:rgba(239,68,68,.1);border:1px solid #ef4444;border-radius:4px;color:#ef4444;font-size:.9rem;font-weight:600">
+    ❌ Something went wrong. Please try again or email directly.
+  </div>
 </form>
 
 <footer><div class="footer-inner">
@@ -757,6 +762,38 @@ function handlePortImgClick(id){if(editMode)triggerPhotoUpload('portfolio',id)}
 
 // ── CONTACT FORM
 //function submitContact(e){e.preventDefault();showToast('✅ Message sent! Augustine will be in touch soon.');e.target.reset()}
+   document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  const success = document.getElementById('form-success');
+  const error = document.getElementById('form-error');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  success.style.display = 'none';
+  error.style.display = 'none';
+  try {
+    const data = new FormData(this);
+    const r = await fetch('https://formspree.io/f/xojgwdyb', {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (r.ok) {
+      success.style.display = 'block';
+      this.reset();
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+    } else {
+      error.style.display = 'block';
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+    }
+  } catch {
+    error.style.display = 'block';
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
+  }
+});
 
 // ── MOBILE MENU
 function toggleMenu(){
