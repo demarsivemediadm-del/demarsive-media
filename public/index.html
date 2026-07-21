@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Augustine Ackah | Demarsive Media</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">   
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;min-width:0}
@@ -23,16 +23,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:68px;display:flex;ali
 .nav-right{display:flex;align-items:center;gap:1rem}
 .nav-hire{padding:.5rem 1.4rem;border:1.5px solid var(--cyan);color:var(--cyan);font-size:.8rem;font-weight:600;text-decoration:none;transition:.3s}
 .nav-hire:hover{background:var(--cyan);color:#000}
-/* EDIT MODE BANNER */
 #edit-banner{display:none;position:fixed;top:68px;left:0;right:0;z-index:190;background:var(--cyan);color:#000;text-align:center;padding:.6rem;font-size:.85rem;font-weight:600;gap:1rem;align-items:center;justify-content:center}
 #edit-banner.on{display:flex}
 .save-all-btn{padding:.3rem 1.2rem;background:#000;color:var(--cyan);border:none;font-family:'Poppins',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;border-radius:2px}
 .save-all-btn:hover{background:#222}
-/* EDITABLE elements */
 [contenteditable="true"]{outline:2px dashed rgba(0,200,212,.5);outline-offset:-2px;border-radius:2px;cursor:text;min-width:10px;transition:outline .2s}
 [contenteditable="true"]:focus{outline:2px solid var(--cyan);background:rgba(0,200,212,.06)}
 section{position:relative;z-index:10}
-/* HERO */
 #hero{min-height:100vh;padding-top:68px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;background:var(--bg3)}
 .hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 5rem 4rem}
 .hero-tag{font-size:.75rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:1.4rem;opacity:0;animation:fadeUp .7s .2s forwards}
@@ -43,14 +40,13 @@ section{position:relative;z-index:10}
 .hero-roles{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.8rem;opacity:0;animation:fadeUp .7s .9s forwards}
 .role-chip{padding:.35rem 1rem;border:1px solid rgba(0,200,212,.3);color:rgba(0,200,212,.85);font-size:.75rem;font-weight:500;background:rgba(0,200,212,.05);border-radius:2px}
 .hero-btns{display:flex;gap:1.2rem;opacity:0;animation:fadeUp .7s 1s forwards}
-.btn-primary{padding:.85rem 2.2rem;background:var(--cyan);color:#000;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;text-decoration:none;transition:.3s;display:inline-block}
+.btn-primary{padding:.85rem 2.2rem;background:var(--cyan);color:#000;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;text-decoration:none;transition:.3s;display:inline-block;border:none;cursor:pointer}
 .btn-primary:hover{background:#00a8b5}
 .btn-outline{padding:.85rem 2.2rem;border:1.5px solid rgba(255,255,255,.25);color:var(--white);font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:600;text-decoration:none;transition:.3s;display:inline-block}
 .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.06)}
 .hero-right{position:relative;overflow:hidden;min-height:600px;background:#111115;height:100%}
 .hero-photo{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .hero-right::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--bg3) 0%,transparent 35%);z-index:1;pointer-events:none}
-/* photo upload overlay */
 .photo-upload-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;background:rgba(0,0,0,.7);z-index:5;opacity:0;transition:.3s;cursor:pointer}
 .hero-right:hover .photo-upload-overlay.edit-mode{opacity:1}
 .photo-upload-overlay span{font-size:.85rem;font-weight:600;color:var(--cyan);letter-spacing:2px}
@@ -67,7 +63,6 @@ section{position:relative;z-index:10}
 .sec-divider{width:50px;height:2.5px;background:var(--cyan);margin-bottom:3rem}
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-/* ABOUT */
 #about{background:var(--bg2)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
 .about-text p{font-size:.95rem;color:rgba(244,244,248,.72);line-height:1.95;margin-bottom:1.1rem}
@@ -80,7 +75,6 @@ section{position:relative;z-index:10}
 .about-stat{border-left:3px solid var(--cyan);padding:.8rem 1.2rem;background:var(--card)}
 .about-stat-num{font-size:2rem;font-weight:800;color:var(--white)}
 .about-stat-label{font-size:.75rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:.2rem}
-/* PORTFOLIO */
 #portfolio{background:var(--bg)}
 .port-tabs{display:flex;gap:.5rem;margin-bottom:3rem;flex-wrap:wrap}
 .ptab{padding:.5rem 1.4rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;transition:.3s}
@@ -88,7 +82,6 @@ section{position:relative;z-index:10}
 .port-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .port-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:.4s;border-radius:4px;position:relative}
 .port-card:hover{border-color:rgba(0,200,212,.3);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
-/* image upload on portfolio card */
 .port-img-wrap{position:relative;height:320px;overflow:hidden;cursor:pointer;background:#0d0d10}
 .port-img-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(18px) brightness(.5);transform:scale(1.2)}
 .port-thumb{position:relative;width:100%;height:100%;object-fit:contain;display:block;z-index:1}
@@ -102,7 +95,6 @@ section{position:relative;z-index:10}
 .port-desc{font-size:.82rem;color:var(--muted);line-height:1.75}
 .port-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
 .ptag{padding:.2rem .7rem;background:rgba(0,200,212,.06);border:1px solid rgba(0,200,212,.18);font-size:.68rem;font-weight:500;color:var(--cyan);border-radius:2px}
-/* SKILLS */
 #skills{background:var(--bg2)}
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
 .sk-card{background:var(--card);border:1px solid var(--border);padding:2rem 1.8rem;transition:.4s;position:relative;overflow:hidden;border-radius:4px}
@@ -113,14 +105,12 @@ section{position:relative;z-index:10}
 .sk-bar-label{display:flex;justify-content:space-between;font-size:.72rem;font-weight:500;color:var(--muted);margin-bottom:.4rem}
 .sk-bar{height:2.5px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden}
 .sk-fill{height:100%;background:var(--cyan);border-radius:2px;width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1)}
-/* TOOLS */
 #toolbox{background:var(--bg)}
 .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
 .tool-card{border-radius:12px;padding:2rem 1.8rem;transition:.4s}
 .tool-card:hover{transform:translateY(-5px) scale(1.02)}
-.tc-yellow{background:#c8f000;color:#111}.tc-red{background:#e8503a;color:#fff}.tc-purple{background:#7c3aed;color:#fff}.tc-teal{background:#0891b2;color:#fff}.tc-orange{background:#ea580c;color:#fff}.tc-green{background:#16a34a;color:#fff}
+.tc-yellow{background:#c8f000;color:#111}.tc-red{background:#e8503a;color:#fff}.tc-purple{background:#7c3aed;color:#fff}.tc-teal{background:#0891b2;color:#fff}.tc-orange{background:#ea580c;color:#fff}.tc-green{background:#16a34a;color:#fff}.tc-blue2{background:#1d4ed8;color:#fff}
 .tool-icon{font-size:2rem;margin-bottom:.8rem}.tool-name{font-size:1.1rem;font-weight:800;margin-bottom:.5rem}.tool-desc{font-size:.85rem;opacity:.8;line-height:1.7}
-/* EXPERIENCE */
 #experience{background:var(--bg2)}
 .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem}
 .timeline{border-left:2px solid rgba(0,200,212,.2);padding-left:2.5rem}
@@ -135,17 +125,15 @@ section{position:relative;z-index:10}
 .ind-chip{padding:.35rem .9rem;border:1px solid rgba(255,255,255,.1);font-size:.78rem;font-weight:500;color:var(--muted);border-radius:2px;transition:.3s}
 .ind-chip:hover{border-color:rgba(0,200,212,.3);color:var(--cyan)}
 .str-chip{padding:.35rem .9rem;border:1px solid rgba(0,200,212,.18);font-size:.78rem;font-weight:500;color:rgba(0,200,212,.8);background:rgba(0,200,212,.05);border-radius:2px}
-/* TESTIMONIALS */
 #testimonials{background:var(--bg)}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
 .tcard{padding:2rem;border-radius:14px;transition:.4s}
 .tcard:hover{transform:translateY(-5px) scale(1.015)}
-.tc-blue{background:linear-gradient(140deg,#67e8f9,#22d3ee)}.tc-purple2{background:linear-gradient(140deg,#c084fc,#a855f7)}.tc-amber{background:linear-gradient(140deg,#fde68a,#fbbf24)}.tc-blue2{background:#1d4ed8;color:#fff}
+.tc-blue{background:linear-gradient(140deg,#67e8f9,#22d3ee)}.tc-purple2{background:linear-gradient(140deg,#c084fc,#a855f7)}.tc-amber{background:linear-gradient(140deg,#fde68a,#fbbf24)}
 .tcard-q{font-size:2.2rem;line-height:1;opacity:.3;margin-bottom:.4rem}
 .tcard-stars{font-size:.9rem;margin-bottom:.7rem;opacity:.7}
 .tcard-text{font-size:.9rem;line-height:1.85;margin-bottom:1.4rem;color:rgba(10,10,20,.82)}
 .tcard-name{font-size:.88rem;font-weight:700;color:rgba(10,10,20,.9)}.tcard-role{font-size:.75rem;color:rgba(10,10,20,.55);margin-top:.25rem}
-/* BLOG */
 #blog{background:var(--bg2)}
 .blog-header-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem}
 .blog-cats{display:flex;gap:.5rem;flex-wrap:wrap}
@@ -165,8 +153,7 @@ section{position:relative;z-index:10}
 .btitle{font-size:.95rem;font-weight:700;color:var(--white);line-height:1.5;margin-bottom:.5rem}
 .bcard.featured .btitle{font-size:1.15rem}
 .bexcerpt{font-size:.82rem;color:var(--muted);line-height:1.75;flex:1}
-.bread{margin-top:.9rem;font-size:.75rem;font-weight:600;color:var(--cyan);letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
-/* CONTACT */
+.bread{margin-top:.9rem;font-size:.75rem;font-weight:600;color:var(--cyan);letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;cursor:pointer;font-family:'Poppins',sans-serif}
 #contact{background:var(--bg)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem}
 .contact-cta{border-radius:12px;padding:2.5rem;background:linear-gradient(135deg,rgba(0,200,212,.08),rgba(168,85,247,.08));border:1px solid rgba(0,200,212,.15);margin-bottom:2rem}
@@ -187,12 +174,11 @@ section{position:relative;z-index:10}
 .cf-textarea{min-height:120px;resize:vertical}
 .cf-input::placeholder,.cf-textarea::placeholder{color:var(--muted)}
 .cf-select option{background:#222228}
-/* FOOTER */
 footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid var(--border);padding:3rem 4rem}
 .footer-inner{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem}
 .footer-brand{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:.8rem}
 .footer-desc{font-size:.83rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem}
-.footer-socials{display:flex;gap:1rem}
+.footer-socials{display:flex;gap:1rem;margin-top:1rem}
 .fsoc{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--muted);transition:.3s;text-decoration:none;border-radius:2px}
 .fsoc:hover{border-color:var(--cyan);color:var(--cyan)}
 .footer-col h4{font-size:.75rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:1.2rem}
@@ -204,124 +190,24 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
 #btt{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border:1.5px solid var(--cyan);background:rgba(26,26,31,.9);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;z-index:300;transition:.3s;opacity:0;border-radius:2px;text-decoration:none}
 #btt.show{opacity:1}
 #btt:hover{background:var(--cyan);color:#000}
-/* TOAST */
 .toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(80px);background:#222;border:1px solid var(--cyan);color:var(--white);padding:.8rem 1.6rem;border-radius:4px;font-size:.85rem;font-weight:500;z-index:9999;transition:.4s;opacity:0}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* ── MOBILE MENU TOGGLE (hidden on desktop) ── */
+/* POST MODAL */
+#post-modal{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,.85);overflow-y:auto;padding:2rem}
 .menu-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.5rem;z-index:250}
 .menu-toggle span{width:24px;height:2px;background:var(--white);transition:.3s;display:block}
 .menu-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .menu-toggle.open span:nth-child(2){opacity:0}
 .menu-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-/* ══════════════════════════════════════
-   RESPONSIVE — TABLET (≤1024px)
-   ══════════════════════════════════════ */
-@media (max-width:1024px){
-  .section-wrap{padding:0 2.5rem}
-  nav{padding:0 2.5rem}
-  .hero-left{padding:4rem 2.5rem}
-  .about-grid,.exp-grid,.contact-grid{gap:3rem}
-  .port-grid{grid-template-columns:repeat(2,1fr)}
-  .skills-grid,.tools-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}
-  .blog-grid{grid-template-columns:1fr 1fr}
-  .blog-grid-2{grid-template-columns:repeat(2,1fr)}
-}
-
-/* ══════════════════════════════════════
-   RESPONSIVE — MOBILE (≤768px)
-   ══════════════════════════════════════ */
-@media (max-width:768px){
-  body{overflow-x:hidden}
-  .section-wrap{padding:0 1.5rem}
-  .section-pad{padding:4rem 0}
-  nav{padding:0 1.2rem;height:60px}
-  .logo{font-size:1.05rem}
-  .nav-right .nav-hire{display:none}
-  .menu-toggle{display:flex}
-  .nav-links{position:fixed;top:60px;left:0;right:0;background:var(--bg2);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .35s ease;border-bottom:1px solid var(--border);z-index:199}
-  .nav-links.open{max-height:400px}
-  .nav-links li{width:100%}
-  .nav-links a{display:block;padding:1rem 1.5rem;border-bottom:1px solid var(--border);font-size:.95rem}
-  .nav-links a::after{display:none}
-
-  /* HERO */
-  #hero{grid-template-columns:1fr;padding-top:60px}
-  .hero-left{padding:2.5rem 1.5rem 2rem;order:2}
-  .hero-right{order:1;min-height:340px;height:340px}
-  .hero-photo-placeholder,#hero-placeholder{min-height:340px}
-  .hero-title{font-size:2.1rem}
-  .hero-brand{font-size:1rem}
-  .hero-desc{font-size:.88rem;max-width:100%}
-  .hero-roles{gap:.5rem}
-  .role-chip{font-size:.7rem;padding:.3rem .8rem}
-  .hero-btns{flex-direction:column;gap:.8rem;width:100%}
-  .btn-primary,.btn-outline{text-align:center;width:100%}
-  .hero-stat-chips{position:static;flex-direction:row;flex-wrap:wrap;margin-top:1rem;padding:0 1.5rem 1.5rem;animation:none;opacity:1}
-  .hstat{padding:.6rem 1rem;flex:1;min-width:90px;justify-content:center}
-  .hstat-num{font-size:1.2rem}
-
-  /* SECTIONS COMMON */
-  .sec-title{font-size:1.6rem}
-  .sec-sub{font-size:.88rem}
-
-  /* ABOUT */
-  .about-grid{grid-template-columns:1fr;gap:2.5rem}
-  .about-skills{grid-template-columns:1fr 1fr;gap:.6rem}
-  .about-stats{grid-template-columns:1fr 1fr}
-
-  /* PORTFOLIO */
-  .port-tabs{gap:.4rem}
-  .ptab{font-size:.75rem;padding:.4rem 1rem}
-  .port-grid{grid-template-columns:1fr}
-  .port-img-wrap{height:260px}
-
-  /* SKILLS / TOOLS / TESTIMONIALS */
-  .skills-grid,.tools-grid,.testi-grid{grid-template-columns:1fr}
-
-  /* EXPERIENCE */
-  .exp-grid{grid-template-columns:1fr;gap:2.5rem}
-  .timeline{padding-left:2rem}
-  .titem::before{left:-2.4rem}
-
-  /* BLOG */
-  .blog-header-row{flex-direction:column;align-items:flex-start;gap:1.2rem}
-  .blog-cats{width:100%}
-  .blog-grid,.blog-grid-2{grid-template-columns:1fr}
-  .bcard.featured .bthumb{height:160px}
-
-  /* CONTACT */
-  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
-  .cf-row{grid-template-columns:1fr}
-
-  /* FOOTER */
-  .footer-inner{grid-template-columns:1fr;gap:2rem}
-  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
-
-  #btt{bottom:1.2rem;right:1.2rem;width:40px;height:40px}
-}
-
-/* ══════════════════════════════════════
-   RESPONSIVE — SMALL MOBILE (≤420px)
-   ══════════════════════════════════════ */
-@media (max-width:420px){
-  .hero-title{font-size:1.7rem}
-  .sec-title{font-size:1.35rem}
-  .about-skills{grid-template-columns:1fr}
-  .hstat{min-width:75px;padding:.5rem .7rem}
-  .hstat-num{font-size:1rem}
-  .hstat-label{font-size:.6rem}
-}
-   #post-modal{position:fixed !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;z-index:9999 !important}
+@media(max-width:1024px){.section-wrap{padding:0 2.5rem}nav{padding:0 2.5rem}.hero-left{padding:4rem 2.5rem}.about-grid,.exp-grid,.contact-grid{gap:3rem}.port-grid{grid-template-columns:repeat(2,1fr)}.skills-grid,.tools-grid,.testi-grid{grid-template-columns:repeat(2,1fr)}.blog-grid{grid-template-columns:1fr 1fr}.blog-grid-2{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){body{overflow-x:hidden}.section-wrap{padding:0 1.5rem}.section-pad{padding:4rem 0}nav{padding:0 1.2rem;height:60px}.logo{font-size:1.05rem}.nav-right .nav-hire{display:none}.menu-toggle{display:flex}.nav-links{position:fixed;top:60px;left:0;right:0;background:var(--bg2);flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .35s ease;border-bottom:1px solid var(--border);z-index:199}.nav-links.open{max-height:400px}.nav-links li{width:100%}.nav-links a{display:block;padding:1rem 1.5rem;border-bottom:1px solid var(--border);font-size:.95rem}.nav-links a::after{display:none}#hero{grid-template-columns:1fr;padding-top:60px}.hero-left{padding:2.5rem 1.5rem 2rem;order:2}.hero-right{order:1;min-height:340px;height:340px}.hero-title{font-size:2.1rem}.hero-brand{font-size:1rem}.hero-desc{font-size:.88rem;max-width:100%}.hero-roles{gap:.5rem}.role-chip{font-size:.7rem;padding:.3rem .8rem}.hero-btns{flex-direction:column;gap:.8rem;width:100%}.btn-primary,.btn-outline{text-align:center;width:100%}.hero-stat-chips{position:static;flex-direction:row;flex-wrap:wrap;margin-top:1rem;padding:0 1.5rem 1.5rem;animation:none;opacity:1}.hstat{padding:.6rem 1rem;flex:1;min-width:90px;justify-content:center}.hstat-num{font-size:1.2rem}.sec-title{font-size:1.6rem}.about-grid{grid-template-columns:1fr;gap:2.5rem}.about-skills{grid-template-columns:1fr 1fr;gap:.6rem}.about-stats{grid-template-columns:1fr 1fr}.port-tabs{gap:.4rem}.ptab{font-size:.75rem;padding:.4rem 1rem}.port-grid{grid-template-columns:1fr}.port-img-wrap{height:260px}.skills-grid,.tools-grid,.testi-grid{grid-template-columns:1fr}.exp-grid{grid-template-columns:1fr;gap:2.5rem}.timeline{padding-left:2rem}.titem::before{left:-2.4rem}.blog-header-row{flex-direction:column;align-items:flex-start;gap:1.2rem}.blog-cats{width:100%}.blog-grid,.blog-grid-2{grid-template-columns:1fr}.bcard.featured .bthumb{height:160px}.contact-grid{grid-template-columns:1fr;gap:2.5rem}.cf-row{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr;gap:2rem}.footer-bottom{flex-direction:column;gap:.5rem;text-align:center}#btt{bottom:1.2rem;right:1.2rem;width:40px;height:40px}}
+@media(max-width:420px){.hero-title{font-size:1.7rem}.sec-title{font-size:1.35rem}.about-skills{grid-template-columns:1fr}.hstat{min-width:75px;padding:.5rem .7rem}.hstat-num{font-size:1rem}.hstat-label{font-size:.6rem}}
 </style>
 </head>
-
 <body>
 <div id="cur"></div><div id="cur2"></div>
 <canvas id="cvs"></canvas>
 
-<!-- EDIT BANNER -->
 <div id="edit-banner">
   ✏️ Edit Mode — double-click any text or click images to change them
   <button class="save-all-btn" onclick="saveAllText()">💾 Save All Changes</button>
@@ -338,15 +224,12 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
     <li><a href="#blog" onclick="closeMenu()">Blog</a></li>
     <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
   </ul>
-  <div class="nav-right">
-    <a href="#contact" class="nav-hire">Hire Me</a>
-  </div>
+  <div class="nav-right"><a href="#contact" class="nav-hire">Hire Me</a></div>
   <button class="menu-toggle" id="menu-toggle" onclick="toggleMenu()" aria-label="Toggle menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-left">
     <div class="hero-tag">◈ Digital Creative — Based in Ghana</div>
@@ -383,7 +266,6 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about"><div class="section-wrap section-pad">
   <div class="about-grid reveal">
     <div>
@@ -391,7 +273,7 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
       <h2 class="sec-title">About Me</h2>
       <div class="sec-divider"></div>
       <div class="about-text">
-        <p id="txt-aboutText1" data-field="aboutText1">I'm <strong>Augustine Ackah</strong>, an IT professional and digital creative based in <strong>Accra, Ghana</strong>. With over 4 years of experience, I combine technical skills with creative design to deliver high-quality digital solutions.</p>
+        <p id="txt-aboutText1" data-field="aboutText1">I'm <strong>Augustine Ackah</strong>, an IT professional and digital creative based in <strong>Accra, Ghana</strong>. With over 5 years of experience, I combine technical skills with creative design to deliver high-quality digital solutions.</p>
         <p id="txt-aboutText2" data-field="aboutText2">As the founder of <strong>Demarsive Media</strong>, my goal is to build a strong personal brand while helping businesses improve their online presence through design, technology, and digital marketing.</p>
       </div>
       <div class="about-stats">
@@ -414,13 +296,8 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
   </div>
 </div></section>
 
-<!-- PORTFOLIO -->
 <section id="portfolio"><div class="section-wrap section-pad">
-  <div class="reveal">
-    <div class="sec-tag">◈ 02 — Selected Work</div>
-    <h2 class="sec-title">Portfolio</h2>
-    <div class="sec-divider"></div>
-  </div>
+  <div class="reveal"><div class="sec-tag">◈ 02 — Selected Work</div><h2 class="sec-title">Portfolio</h2><div class="sec-divider"></div></div>
   <div class="port-tabs reveal">
     <button class="ptab active" onclick="filterPort('all',this)">All Work</button>
     <button class="ptab" onclick="filterPort('graphic',this)">Graphic Design</button>
@@ -430,7 +307,6 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
   <div class="port-grid reveal" id="port-grid"></div>
 </div></section>
 
-<!-- SKILLS -->
 <section id="skills"><div class="section-wrap section-pad">
   <div class="reveal"><div class="sec-tag">◈ 03 — Capabilities</div><h2 class="sec-title">My Skills</h2><div class="sec-divider"></div></div>
   <div class="skills-grid reveal" id="sk-grid">
@@ -443,7 +319,6 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
   </div>
 </div></section>
 
-<!-- TOOLBOX -->
 <section id="toolbox"><div class="section-wrap section-pad">
   <div class="reveal"><div class="sec-tag">◈ 04 — Arsenal</div><h2 class="sec-title">My Toolbox</h2><div class="sec-divider"></div></div>
   <div class="tools-grid reveal">
@@ -453,18 +328,10 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
     <div class="tool-card tc-teal"><div class="tool-icon">💻</div><div class="tool-name">HTML / CSS / JS</div><div class="tool-desc">Core web technologies for building responsive pixel-perfect websites.</div></div>
     <div class="tool-card tc-orange"><div class="tool-icon">📊</div><div class="tool-name">Social Tools</div><div class="tool-desc">TikTok, Meta Business Suite, Canva Pro for social presence management.</div></div>
     <div class="tool-card tc-green"><div class="tool-icon">🤖</div><div class="tool-name">AI Tools</div><div class="tool-desc">Leveraging AI to enhance workflow, motion graphics, and content ideation.</div></div>
-   <div class="tool-card tc-blue2">
-  <div class="tool-icon">
-    <i class="fa-solid fa-pen-nib" style="font-size:2rem"></i>
-  </div>
-  <div class="tool-name">Affinity Suite</div>
-  <div class="tool-desc">Affinity Designer, Photo & Publisher for professional design without subscriptions.</div>
-</div>
-</div>
+    <div class="tool-card tc-blue2"><div class="tool-icon"><i class="fa-solid fa-pen-nib" style="font-size:2rem"></i></div><div class="tool-name">Affinity Suite</div><div class="tool-desc">Affinity Designer, Photo & Publisher for professional design without subscriptions.</div></div>
   </div>
 </div></section>
 
-<!-- EXPERIENCE -->
 <section id="experience"><div class="section-wrap section-pad">
   <div class="reveal"><div class="sec-tag">◈ 05 — Journey</div><h2 class="sec-title">Experience</h2><div class="sec-divider"></div></div>
   <div class="exp-grid reveal">
@@ -482,7 +349,6 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
   </div>
 </div></section>
 
-<!-- TESTIMONIALS -->
 <section id="testimonials"><div class="section-wrap section-pad">
   <div class="reveal"><div class="sec-tag">◈ 06 — Reviews</div><h2 class="sec-title">What Clients Say</h2><div class="sec-divider"></div></div>
   <div class="testi-grid reveal">
@@ -492,7 +358,6 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
   </div>
 </div></section>
 
-<!-- BLOG -->
 <section id="blog"><div class="section-wrap section-pad">
   <div class="blog-header-row reveal">
     <div><div class="sec-tag">◈ 07 — Creative Hub</div><h2 class="sec-title">Blog & Events</h2><div class="sec-divider" style="margin-bottom:0"></div></div>
@@ -507,7 +372,6 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
   <div id="blog-container" class="reveal"></div>
 </div></section>
 
-<!-- CONTACT -->
 <section id="contact"><div class="section-wrap section-pad">
   <div class="reveal"><div class="sec-tag">◈ 08 — Let's Work</div><h2 class="sec-title">Get In Touch</h2><div class="sec-divider"></div></div>
   <div class="contact-grid reveal">
@@ -521,117 +385,115 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
       </div>
     </div>
     <form class="cform" id="contact-form">
-  <div class="cf-row">
-    <div class="cf-group">
-      <label class="cf-label">Full Name</label>
-      <input class="cf-input" type="text" name="name" placeholder="Your name" required>
-    </div>
-    <div class="cf-group">
-      <label class="cf-label">Email</label>
-      <input class="cf-input" type="email" name="email" placeholder="your@email.com" required>
-    </div>
+      <div class="cf-row">
+        <div class="cf-group"><label class="cf-label">Full Name</label><input class="cf-input" type="text" name="name" placeholder="Your name" required></div>
+        <div class="cf-group"><label class="cf-label">Email</label><input class="cf-input" type="email" name="email" placeholder="your@email.com" required></div>
+      </div>
+      <div class="cf-group"><label class="cf-label">Service Needed</label>
+        <select class="cf-select cf-input" name="service">
+          <option>Graphic Design / Branding</option>
+          <option>Web Design & Development</option>
+          <option>Video Editing / Motion Graphics</option>
+          <option>Social Media Branding</option>
+          <option>Full Digital Package</option>
+        </select>
+      </div>
+      <div class="cf-group"><label class="cf-label">Message</label><textarea class="cf-textarea" name="message" placeholder="Tell me about your project..." required></textarea></div>
+      <button type="submit" class="btn-primary" id="submit-btn" style="align-self:flex-start;font-family:'Poppins',sans-serif">Send Message →</button>
+      <div id="form-success" style="display:none;margin-top:1rem;padding:1rem 1.5rem;background:rgba(0,200,212,.1);border:1px solid var(--cyan);border-radius:4px;color:var(--cyan);font-size:.9rem;font-weight:600">✅ Message sent! Augustine will get back to you soon.</div>
+      <div id="form-error" style="display:none;margin-top:1rem;padding:1rem 1.5rem;background:rgba(239,68,68,.1);border:1px solid #ef4444;border-radius:4px;color:#ef4444;font-size:.9rem;font-weight:600">❌ Something went wrong. Please try again or email directly.</div>
+    </form>
   </div>
-  <div class="cf-group">
-    <label class="cf-label">Service Needed</label>
-    <select class="cf-select cf-input" name="service">
-      <option>Graphic Design / Branding</option>
-      <option>Web Design & Development</option>
-      <option>Video Editing / Motion Graphics</option>
-      <option>Social Media Branding</option>
-      <option>Full Digital Package</option>
-    </select>
-  </div>
-  <div class="cf-group">
-    <label class="cf-label">Message</label>
-    <textarea class="cf-textarea" name="message" placeholder="Tell me about your project..." required></textarea>
-  </div>
-  <button type="submit" class="btn-primary" id="submit-btn" style="align-self:flex-start;border:none;cursor:pointer;font-family:'Poppins',sans-serif">Send Message →</button>
-  <div id="form-success" style="display:none;margin-top:1rem;padding:1rem 1.5rem;background:rgba(0,200,212,.1);border:1px solid var(--cyan);border-radius:4px;color:var(--cyan);font-size:.9rem;font-weight:600">
-    ✅ Message sent! Augustine will get back to you soon.
-  </div>
-  <div id="form-error" style="display:none;margin-top:1rem;padding:1rem 1.5rem;background:rgba(239,68,68,.1);border:1px solid #ef4444;border-radius:4px;color:#ef4444;font-size:.9rem;font-weight:600">
-    ❌ Something went wrong. Please try again or email directly.
-  </div>
-</form>
+</div></section>
 
-<footer><div class="footer-inner">
-  <div><div class="footer-brand">Demarsive Media</div><div class="footer-desc">A digital creative studio based in Accra, Ghana. Building brands that people remember.<div class="footer-socials">
-  <a href="https://www.linkedin.com/in/demarsivemediadm" target="_blank" class="fsoc" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-  <a href="https://www.instagram.com/demarsivemedia" target="_blank" class="fsoc" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-  <a href="https://www.tiktok.com/@demarsivemedia" target="_blank" class="fsoc" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-  <a href="https://www.youtube.com/@demarsivemedia" target="_blank" class="fsoc" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-  <a href="https://x.com/augustineackah_" target="_blank" class="fsoc" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Demarsive Media</div>
+      <div class="footer-desc">A digital creative studio based in Accra, Ghana. Building brands that people remember.</div>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/demarsivemediadm" target="_blank" class="fsoc" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/demarsivemedia" target="_blank" class="fsoc" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@demarsivemedia" target="_blank" class="fsoc" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://www.youtube.com/@demarsivemedia" target="_blank" class="fsoc" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://x.com/augustineackah_" target="_blank" class="fsoc" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="#portfolio">Graphic Design</a></li><li><a href="#portfolio">Web Design</a></li><li><a href="#portfolio">Video Editing</a></li><li><a href="#portfolio">Social Media</a></li></ul></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#about">About Me</a></li><li><a href="#experience">Resume</a></li><li><a href="#blog">Blog & Events</a></li><li><a href="#contact">Hire Me</a></li><li><a href="/admin">Admin Panel</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 <span style="color:var(--cyan);font-weight:600">Demarsive Media</span> · Augustine Ackah</p>
+    <p style="font-size:.8rem;color:var(--muted)">Accra, Ghana 🇬🇭</p>
+  </div>
+</footer>
+
+<!-- BLOG POST MODAL — must be before </body> -->
+<div id="post-modal">
+  <div style="max-width:800px;margin:0 auto;background:#1a1a1f;border:1px solid rgba(0,200,212,.2);border-radius:12px;overflow:hidden">
+    <div id="post-modal-img" style="height:300px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:#0d0d10"></div>
+    <div style="padding:2.5rem">
+      <div id="post-modal-cat" style="font-size:.7rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#00c8d4;margin-bottom:.8rem"></div>
+      <h2 id="post-modal-title" style="font-size:1.8rem;font-weight:800;color:#f4f4f8;margin-bottom:.5rem;line-height:1.3"></h2>
+      <div id="post-modal-date" style="font-size:.8rem;color:#8a8a9a;margin-bottom:2rem"></div>
+      <div id="post-modal-content" style="font-size:.95rem;color:rgba(244,244,248,.75);line-height:1.9"></div>
+      <button onclick="closePost()" style="margin-top:2.5rem;padding:.85rem 2rem;background:#00c8d4;color:#000;border:none;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;border-radius:4px">← Back to Blog</button>
+    </div>
+  </div>
 </div>
-  <div class="footer-col"><h4>Services</h4><ul><li><a href="#portfolio">Graphic Design</a></li><li><a href="#portfolio">Web Design</a></li><li><a href="#portfolio">Video Editing</a></li><li><a href="#portfolio">Social Media</a></li></ul></div>
-  <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#about">About Me</a></li><li><a href="#experience">Resume</a></li><li><a href="#blog">Blog & Events</a></li><li><a href="#contact">Hire Me</a></li><li><a href="/admin">Admin Panel</a></li></ul></div>
-</div><div class="footer-bottom"><p>© 2021 <span style="color:var(--cyan);font-weight:600">Demarsive Media</span> · Augustine Ackah</p><p style="font-size:.8rem;color:var(--muted)">Accra, Ghana 🇬🇭</p></div></footer>
 
 <a href="#hero" id="btt">↑</a>
 <div class="toast" id="toast"></div>
 <input type="file" id="hidden-file-input" accept="image/*" style="display:none">
 
 <script>
-const API = '';
-let token = localStorage.getItem('dm_token');
-let editMode = false;
-let pendingTextChanges = {};
-let allPortfolio = [];
-let allBlog = [];
+let token=localStorage.getItem('dm_token');
+let editMode=false;
+let pendingTextChanges={};
+let allPortfolio=[];
+let allBlog=[];
 
-// ── CURSOR
+// CURSOR
 const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
 document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';setTimeout(()=>{cur2.style.left=e.clientX+'px';cur2.style.top=e.clientY+'px'},55)});
 
-// ── CANVAS
+// CANVAS
 const cvs=document.getElementById('cvs'),ctx=cvs.getContext('2d');
 function resize(){cvs.width=innerWidth;cvs.height=innerHeight}resize();
 window.addEventListener('resize',resize);
 const pts=Array.from({length:65},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,s:Math.random()*1.6+.4,o:Math.random()*.45+.08}));
 (function draw(){ctx.clearRect(0,0,cvs.width,cvs.height);ctx.strokeStyle='rgba(0,200,212,.03)';ctx.lineWidth=.5;for(let x=0;x<cvs.width;x+=70){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,cvs.height);ctx.stroke()}for(let y=0;y<cvs.height;y+=70){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(cvs.width,y);ctx.stroke()}pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=cvs.width;if(p.x>cvs.width)p.x=0;if(p.y<0)p.y=cvs.height;if(p.y>cvs.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle=`rgba(0,200,212,${p.o})`;ctx.fill()});pts.forEach((a,i)=>pts.slice(i+1).forEach(b=>{const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<100){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(0,200,212,${.06*(1-d/100)})`;ctx.lineWidth=.5;ctx.stroke()}}));requestAnimationFrame(draw)})();
 
-// ── SCROLL REVEAL
+// SCROLL REVEAL
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.id==='sk-grid'){setTimeout(()=>e.target.querySelectorAll('.sk-fill').forEach(b=>b.style.width=b.dataset.w+'%'),200)}}})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// ── BACK TO TOP
-const btt=document.getElementById('btt');
-window.addEventListener('scroll',()=>{btt.classList.toggle('show',scrollY>400)});
+// BACK TO TOP
+window.addEventListener('scroll',()=>{document.getElementById('btt').classList.toggle('show',scrollY>400)});
 
-// ── TOAST
+// TOAST
 function showToast(msg,ok=true){const t=document.getElementById('toast');t.textContent=msg;t.style.borderColor=ok?'var(--cyan)':'#c00';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
 
-// ── LOAD SITE DATA
+// LOAD DATA
 async function loadSiteData(){
   try{
     const r=await fetch('/api/site');
     const d=await r.json();
-    // Update text fields
-    Object.entries(d.site).forEach(([k,v])=>{
-      const el=document.querySelector(`[data-field="${k}"]`);
-      if(el)el.textContent=v;
-    });
-    // Hero photo
-    if(d.site.heroPhoto){
-      document.getElementById('hero-img').src=d.site.heroPhoto;
-      document.getElementById('hero-img').style.display='block';
-      document.getElementById('hero-placeholder').style.display='none';
-    }
-    // Portfolio
-    allPortfolio=d.portfolio;
+    Object.entries(d.site).forEach(([k,v])=>{const el=document.querySelector(`[data-field="${k}"]`);if(el)el.textContent=v});
+    if(d.site.heroPhoto){document.getElementById('hero-img').src=d.site.heroPhoto;document.getElementById('hero-img').style.display='block';document.getElementById('hero-placeholder').style.display='none'}
+    allPortfolio=d.portfolio||[];
     renderPortfolio(allPortfolio);
-    // Blog
-    allBlog = d.blog || [];
-console.log('Blog posts loaded:', allBlog.length);
+    allBlog=d.blog||[];
     renderBlog(allBlog);
   }catch(e){console.log('Offline mode');renderPortfolio([]);renderBlog([])}
 }
 
-// ── RENDER PORTFOLIO
+// RENDER PORTFOLIO
 function renderPortfolio(items){
   const grid=document.getElementById('port-grid');
   if(!items.length){grid.innerHTML='<p style="color:var(--muted);padding:2rem 0">No portfolio items yet. Add some from the admin panel!</p>';return}
   grid.innerHTML=items.map((p,i)=>`
-    <div class="port-card${p.featured&&i===0?' style="grid-column:span 2"':''}" data-cat="${p.category}" data-id="${p.id}">
+    <div class="port-card" data-cat="${p.category}" data-id="${p.id}">
       <div class="port-img-wrap" onclick="handlePortImgClick('${p.id}')">
         ${p.image?`<div class="port-img-bg" style="background-image:url('${p.image}')"></div><img src="${p.image}" class="port-thumb" alt="${p.title}">`:`<div class="port-thumb-placeholder">${p.emoji||'🎨'}</div>`}
         <div class="port-img-overlay edit-mode"><span>📷 CHANGE IMAGE</span></div>
@@ -645,7 +507,7 @@ function renderPortfolio(items){
     </div>`).join('');
 }
 
-// ── RENDER BLOG
+// RENDER BLOG
 function renderBlog(posts){
   const c=document.getElementById('blog-container');
   if(!posts.length){c.innerHTML='<p style="color:var(--muted)">No blog posts yet. Write your first post from the admin panel!</p>';return}
@@ -662,7 +524,7 @@ function renderBlog(posts){
           <div class="bdate">${p.date}</div>
           <div class="btitle">${p.title}</div>
           <div class="bexcerpt">${p.excerpt}</div>
-          <a href="#" class="bread" onclick="openPost('${p.id}');return false;">Read More →</a>
+          <button class="bread" onclick="openPost('${p.id}')">Read More →</button>
         </div>
       </div>`).join('')}</div>`);
   }
@@ -677,182 +539,88 @@ function renderBlog(posts){
           <div class="bdate">${p.date}</div>
           <div class="btitle">${p.title}</div>
           <div class="bexcerpt">${p.excerpt}</div>
-          <a href="#" class="bread">Read More →</a>
+          <button class="bread" onclick="openPost('${p.id}')">Read More →</button>
         </div>
       </div>`).join('')}</div>`);
   }
   c.innerHTML=rows.join('');
 }
 
-// ── PORTFOLIO FILTER
-function filterPort(cat,btn){
-  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const filtered=cat==='all'?allPortfolio:allPortfolio.filter(p=>p.category===cat);
-  renderPortfolio(filtered);
-}
+// FILTERS
+function filterPort(cat,btn){document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderPortfolio(cat==='all'?allPortfolio:allPortfolio.filter(p=>p.category===cat))}
+function filterBlog(cat,btn){document.querySelectorAll('.bcat').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderBlog(cat==='all'?allBlog:allBlog.filter(p=>p.category===cat))}
 
-// ── BLOG FILTER
-function filterBlog(cat,btn){
-  document.querySelectorAll('.bcat').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const filtered=cat==='all'?allBlog:allBlog.filter(p=>p.category===cat);
-  renderBlog(filtered);
-}
-
-// ── EDIT MODE (enabled from admin panel via token)
-function checkEditMode(){
-  token=localStorage.getItem('dm_token');
-  if(token){enableEditMode()}
-}
+// EDIT MODE
+function checkEditMode(){token=localStorage.getItem('dm_token');if(token)enableEditMode()}
 function enableEditMode(){
   editMode=true;
   document.getElementById('edit-banner').classList.add('on');
   document.body.style.paddingTop='36px';
-  // Make text editable
-  document.querySelectorAll('[data-field]').forEach(el=>{
-    el.contentEditable='true';
-    el.addEventListener('input',()=>{pendingTextChanges[el.dataset.field]=el.textContent});
-  });
-  // Show photo overlays
+  document.querySelectorAll('[data-field]').forEach(el=>{el.contentEditable='true';el.addEventListener('input',()=>{pendingTextChanges[el.dataset.field]=el.textContent})});
   document.getElementById('photo-overlay').classList.add('edit-mode');
   document.getElementById('hero-photo-wrap').addEventListener('click',()=>triggerPhotoUpload('hero'));
   document.querySelectorAll('.port-img-overlay').forEach(o=>o.classList.add('edit-mode'));
 }
-function exitEditMode(){
-  editMode=false;
-  document.getElementById('edit-banner').classList.remove('on');
-  document.body.style.paddingTop='0';
-  document.querySelectorAll('[data-field]').forEach(el=>el.contentEditable='false');
-}
+function exitEditMode(){editMode=false;document.getElementById('edit-banner').classList.remove('on');document.body.style.paddingTop='0';document.querySelectorAll('[data-field]').forEach(el=>el.contentEditable='false')}
 async function saveAllText(){
   if(!Object.keys(pendingTextChanges).length){showToast('Nothing changed yet!');return}
-  try{
-    const r=await fetch('/api/site',{method:'PUT',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify(pendingTextChanges)});
-    if(r.ok){showToast('✅ All changes saved!');pendingTextChanges={}}
-    else showToast('❌ Save failed — please log in again',false);
-  }catch{showToast('❌ Server error',false)}
+  try{const r=await fetch('/api/site',{method:'PUT',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify(pendingTextChanges)});if(r.ok){showToast('✅ All changes saved!');pendingTextChanges={}}else showToast('❌ Save failed — please log in again',false)}catch{showToast('❌ Server error',false)}
 }
 
-// ── PHOTO UPLOAD
+// PHOTO UPLOAD
 function triggerPhotoUpload(type,portId){
   const input=document.getElementById('hidden-file-input');
   input.onchange=async(e)=>{
     const file=e.target.files[0];if(!file)return;
-    const fd=new FormData();
-    fd.append('image',file);
+    const fd=new FormData();fd.append('image',file);
     if(type==='hero'){
       const r=await fetch('/api/upload',{method:'POST',headers:{'Authorization':'Bearer '+token},body:fd});
       const d=await r.json();
-      if(d.url){
-        await fetch('/api/site',{method:'PUT',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({heroPhoto:d.url})});
-        document.getElementById('hero-img').src=d.url;
-        document.getElementById('hero-img').style.display='block';
-        document.getElementById('hero-placeholder').style.display='none';
-        showToast('✅ Photo updated!');
-      }
-    } else if(type==='portfolio'&&portId){
-      fd.append('id',portId);
-      const r=await fetch('/api/portfolio/'+portId,{method:'PUT',headers:{'Authorization':'Bearer '+token},body:fd});
-      if(r.ok){showToast('✅ Image updated!');loadSiteData()}
-    }
+      if(d.url){await fetch('/api/site',{method:'PUT',headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},body:JSON.stringify({heroPhoto:d.url})});document.getElementById('hero-img').src=d.url;document.getElementById('hero-img').style.display='block';document.getElementById('hero-placeholder').style.display='none';showToast('✅ Photo updated!')}
+    }else if(type==='portfolio'&&portId){fd.append('id',portId);const r=await fetch('/api/portfolio/'+portId,{method:'PUT',headers:{'Authorization':'Bearer '+token},body:fd});if(r.ok){showToast('✅ Image updated!');loadSiteData()}}
     input.value='';
-  };
-  input.click();
+  };input.click();
 }
 function handlePortImgClick(id){if(editMode)triggerPhotoUpload('portfolio',id)}
 
-// ── CONTACT FORM
-//function submitContact(e){e.preventDefault();showToast('✅ Message sent! Augustine will be in touch soon.');e.target.reset()}
-   document.getElementById('contact-form').addEventListener('submit', async function(e) {
+// CONTACT FORM
+document.getElementById('contact-form').addEventListener('submit',async function(e){
   e.preventDefault();
-  const btn = document.getElementById('submit-btn');
-  const success = document.getElementById('form-success');
-  const error = document.getElementById('form-error');
-  btn.textContent = 'Sending...';
-  btn.disabled = true;
-  success.style.display = 'none';
-  error.style.display = 'none';
-  try {
-    const data = new FormData(this);
-    const r = await fetch('https://formspree.io/f/xojgwdyb', {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (r.ok) {
-      success.style.display = 'block';
-      this.reset();
-      btn.textContent = 'Send Message →';
-      btn.disabled = false;
-    } else {
-      error.style.display = 'block';
-      btn.textContent = 'Send Message →';
-      btn.disabled = false;
-    }
-  } catch {
-    error.style.display = 'block';
-    btn.textContent = 'Send Message →';
-    btn.disabled = false;
-  }
+  const btn=document.getElementById('submit-btn');
+  const success=document.getElementById('form-success');
+  const error=document.getElementById('form-error');
+  btn.textContent='Sending...';btn.disabled=true;
+  success.style.display='none';error.style.display='none';
+  try{
+    const r=await fetch('https://formspree.io/f/xojgwdyb',{method:'POST',body:new FormData(this),headers:{'Accept':'application/json'}});
+    if(r.ok){success.style.display='block';this.reset();btn.textContent='Send Message →';btn.disabled=false}
+    else{error.style.display='block';btn.textContent='Send Message →';btn.disabled=false}
+  }catch{error.style.display='block';btn.textContent='Send Message →';btn.disabled=false}
 });
 
-// ── MOBILE MENU
-function toggleMenu(){
-  document.getElementById('nav-links').classList.toggle('open');
-  document.getElementById('menu-toggle').classList.toggle('open');
-}
-function closeMenu(){
-  document.getElementById('nav-links').classList.remove('open');
-  document.getElementById('menu-toggle').classList.remove('open');
-}
-// ── BLOG POST READER
+// MOBILE MENU
+function toggleMenu(){document.getElementById('nav-links').classList.toggle('open');document.getElementById('menu-toggle').classList.toggle('open')}
+function closeMenu(){document.getElementById('nav-links').classList.remove('open');document.getElementById('menu-toggle').classList.remove('open')}
+
+// BLOG POST MODAL
 function openPost(id){
-  const post = allBlog.find(p => p.id === id);
-  if(!post) return;
-  const modal = document.getElementById('post-modal');
-  const imgDiv = document.getElementById('post-modal-img');
-  imgDiv.innerHTML = post.image
-    ? `<img src="${post.image}" style="width:100%;height:100%;object-fit:cover">`
-    : `<span>${post.emoji || '📝'}</span>`;
-  document.getElementById('post-modal-cat').textContent = post.category.toUpperCase();
-  document.getElementById('post-modal-title').textContent = post.title;
-  document.getElementById('post-modal-date').textContent = post.date;
-  document.getElementById('post-modal-content').innerHTML = post.content || post.excerpt;
-  modal.style.display = 'block';
-  document.body.style.overflow = 'hidden';
+  const post=allBlog.find(p=>p.id===id);
+  if(!post)return;
+  const modal=document.getElementById('post-modal');
+  document.getElementById('post-modal-img').innerHTML=post.image?`<img src="${post.image}" style="width:100%;height:100%;object-fit:cover">`:`<span>${post.emoji||'📝'}</span>`;
+  document.getElementById('post-modal-cat').textContent=post.category.toUpperCase();
+  document.getElementById('post-modal-title').textContent=post.title;
+  document.getElementById('post-modal-date').textContent=post.date;
+  document.getElementById('post-modal-content').innerHTML=post.content||post.excerpt;
+  modal.style.display='block';
+  document.body.style.overflow='hidden';
 }
-function closePost(){
-  document.getElementById('post-modal').style.display = 'none';
-  document.body.style.overflow = '';
-}
-// Close on background click
-window.addEventListener('load', function(){
-  const postModal = document.getElementById('post-modal');
-  if(postModal){
-    postModal.addEventListener('click', function(e){
-      if(e.target === this) closePost();
-    });
-  }
-});
-   
-// ── INIT
+function closePost(){document.getElementById('post-modal').style.display='none';document.body.style.overflow=''}
+document.getElementById('post-modal').addEventListener('click',function(e){if(e.target===this)closePost()});
+
+// INIT
 loadSiteData();
 checkEditMode();
 </script>
-      <!-- BLOG POST MODAL -->
-<div id="post-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);overflow-y:auto;padding:2rem">
-  <div style="max-width:800px;margin:0 auto;background:#1a1a1f;border:1px solid rgba(0,200,212,.2);border-radius:12px;overflow:hidden">
-    <div id="post-modal-img" style="height:300px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:#0d0d10"></div>
-    <div style="padding:2.5rem">
-      <div id="post-modal-cat" style="font-size:.7rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#00c8d4;margin-bottom:.8rem"></div>
-      <h2 id="post-modal-title" style="font-size:1.8rem;font-weight:800;color:#f4f4f8;margin-bottom:.5rem;line-height:1.3"></h2>
-      <div id="post-modal-date" style="font-size:.8rem;color:#8a8a9a;margin-bottom:2rem"></div>
-      <div id="post-modal-content" style="font-size:.95rem;color:rgba(244,244,248,.75);line-height:1.9"></div>
-      <button onclick="closePost()" style="margin-top:2.5rem;padding:.85rem 2rem;background:#00c8d4;color:#000;border:none;font-family:'Poppins',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;border-radius:4px">← Back to Blog</button>
-    </div>
-  </div>
-</div>
-   <a href="#hero" id="btt">↑</a> 
 </body>
 </html>
