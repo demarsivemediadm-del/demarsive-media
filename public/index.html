@@ -52,7 +52,7 @@ section{position:relative;z-index:10}
 .photo-upload-overlay span{font-size:.85rem;font-weight:600;color:var(--cyan);letter-spacing:2px}
 .photo-upload-icon{font-size:3rem}
 .hero-stat-chips{position:absolute;bottom:2.5rem;right:2rem;z-index:2;display:flex;flex-direction:column;gap:.8rem;opacity:0;animation:fadeLeft 1s 1.2s forwards}
-.hstat{background:rgba(26,26,31,.85);border:1px solid rgba(0,200,212,.2);backdrop-filter:blur(10px);padding:.9rem 1.4rem;display:flex;align-items:center;gap:.9rem}
+.hstat{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(0,200,212,.25);box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08);padding:.9rem 1.4rem;display:flex;align-items:center;gap:.9rem;border-radius:8px}
 .hstat-num{font-size:1.5rem;font-weight:800;color:var(--cyan)}.hstat-label{font-size:.7rem;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px}
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
@@ -80,15 +80,15 @@ section{position:relative;z-index:10}
 .ptab{padding:.5rem 1.4rem;border:1px solid var(--border);background:transparent;color:var(--muted);font-family:'Poppins',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;transition:.3s}
 .ptab.active,.ptab:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,200,212,.06)}
 .port-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.port-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:.4s;border-radius:4px;position:relative}
-.port-card:hover{border-color:rgba(0,200,212,.3);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.port-card{background:rgba(255,255,255,.04);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 32px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden;transition:.4s;border-radius:12px;position:relative}
+.port-card:hover{border-color:rgba(0,200,212,.3);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 30px rgba(0,200,212,.08),inset 0 1px 0 rgba(255,255,255,.08)}
 .port-img-wrap{position:relative;height:320px;overflow:hidden;cursor:pointer;background:#0d0d10}
 .port-img-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:blur(18px) brightness(.5);transform:scale(1.2)}
 .port-thumb{position:relative;width:100%;height:100%;object-fit:contain;display:block;z-index:1}
 .port-thumb-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3rem;background:var(--bg2)}
-.port-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.7);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;opacity:0;transition:.3s}
-.port-card:hover .port-img-overlay.edit-mode{opacity:1}
-.port-img-overlay span{font-size:.75rem;color:var(--cyan);font-weight:600;letter-spacing:1px}
+.port-img-overlay{position:absolute;inset:0;background:rgba(0,0,0,.6);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;opacity:0;transition:.3s}
+.port-card:hover .port-img-overlay{opacity:1}
+.port-img-overlay span{font-size:.82rem;color:#fff;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:rgba(0,200,212,.2);border:1px solid rgba(0,200,212,.5);padding:.5rem 1.2rem;border-radius:20px}
 .port-body{padding:1.3rem}
 .port-cat{font-size:.65rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:.4rem}
 .port-name{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.5rem;line-height:1.4}
@@ -97,9 +97,9 @@ section{position:relative;z-index:10}
 .ptag{padding:.2rem .7rem;background:rgba(0,200,212,.06);border:1px solid rgba(0,200,212,.18);font-size:.68rem;font-weight:500;color:var(--cyan);border-radius:2px}
 #skills{background:var(--bg2)}
 .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-.sk-card{background:var(--card);border:1px solid var(--border);padding:2rem 1.8rem;transition:.4s;position:relative;overflow:hidden;border-radius:4px}
+.sk-card{background:rgba(255,255,255,.04);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 32px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.05);padding:2rem 1.8rem;transition:.4s;position:relative;overflow:hidden;border-radius:12px}
 .sk-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2.5px;background:var(--cyan);transition:.4s}
-.sk-card:hover{border-color:rgba(0,200,212,.25)}.sk-card:hover::after{width:100%}
+.sk-card:hover{background:rgba(0,200,212,.07);border-color:rgba(0,200,212,.25);box-shadow:0 12px 40px rgba(0,200,212,.12),inset 0 1px 0 rgba(255,255,255,.08)}.sk-card:hover::after{width:100%}
 .sk-icon{font-size:2rem;margin-bottom:1rem}.sk-title{font-size:.95rem;font-weight:700;color:var(--white);margin-bottom:.6rem}
 .sk-desc{font-size:.82rem;color:var(--muted);line-height:1.75;margin-bottom:1.3rem}
 .sk-bar-label{display:flex;justify-content:space-between;font-size:.72rem;font-weight:500;color:var(--muted);margin-bottom:.4rem}
@@ -141,8 +141,8 @@ section{position:relative;z-index:10}
 .bcat.active,.bcat:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,200,212,.06)}
 .blog-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
 .blog-grid-2{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.bcard{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:.4s;cursor:pointer;border-radius:4px}
-.bcard:hover{border-color:rgba(0,200,212,.3);transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,.3)}
+.bcard{background:rgba(255,255,255,.04);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 32px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.05);overflow:hidden;transition:.4s;cursor:pointer;border-radius:12px}
+.bcard:hover{border-color:rgba(0,200,212,.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3),0 0 20px rgba(0,200,212,.08),inset 0 1px 0 rgba(255,255,255,.08)}
 .bcard.featured .bthumb{height:200px}
 .bthumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;overflow:hidden}
 .bthumb img{width:100%;height:100%;object-fit:cover}
@@ -156,7 +156,7 @@ section{position:relative;z-index:10}
 .bread{margin-top:.9rem;font-size:.75rem;font-weight:600;color:var(--cyan);letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;background:none;border:none;cursor:pointer;font-family:'Poppins',sans-serif}
 #contact{background:var(--bg)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem}
-.contact-cta{border-radius:12px;padding:2.5rem;background:linear-gradient(135deg,rgba(0,200,212,.08),rgba(168,85,247,.08));border:1px solid rgba(0,200,212,.15);margin-bottom:2rem}
+.contact-cta{border-radius:16px;padding:2.5rem;background:linear-gradient(135deg,rgba(0,200,212,.06),rgba(168,85,247,.06));backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(0,200,212,.2);box-shadow:0 8px 32px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.08);margin-bottom:2rem}
 .contact-cta h3{font-size:1.5rem;font-weight:700;margin-bottom:.8rem;line-height:1.3}
 .contact-cta p{font-size:.9rem;color:var(--muted);line-height:1.8}
 .clinks{display:flex;flex-direction:column;gap:.8rem}
@@ -336,31 +336,11 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
   <div class="reveal"><div class="sec-tag">◈ 05 — Journey</div><h2 class="sec-title">Experience</h2><div class="sec-divider"></div></div>
   <div class="exp-grid reveal">
     <div class="timeline">
-  <div class="titem">
-    <div class="ti-year">2024 — Present</div>
-    <div class="ti-role">Founder & Creative Director</div>
-    <div class="ti-company">Demarsive Media · Accra, Ghana</div>
-    <div class="ti-desc">Leading a full-service digital creative studio offering graphic design, web development, video production, and social media branding to businesses across Ghana and beyond.</div>
-  </div>
-  <div class="titem">
-    <div class="ti-year">2023 — Present (Part-time)</div>
-    <div class="ti-role">Design Lead</div>
-    <div class="ti-company">Alba · Ghana</div>
-    <div class="ti-desc">Leading creative direction and visual design work including photo retouching, brand design, and design strategy. Currently contributing part-time alongside Demarsive Media.</div>
-  </div>
-  <div class="titem">
-    <div class="ti-year">2022 — 2023</div>
-    <div class="ti-role">Videographer & Creative Designer</div>
-    <div class="ti-company">MarketGod · Ghana</div>
-    <div class="ti-desc">Handled full creative production including videography, video editing, graphic design, and social media content creation to drive brand growth and digital engagement.</div>
-  </div>
-  <div class="titem">
-    <div class="ti-year">2021 — 2022</div>
-    <div class="ti-role">IT & Graphic Design Specialist</div>
-    <div class="ti-company">Ghana Armed Forces · Records Department</div>
-    <div class="ti-desc">Served in the Records Department handling IT operations, website management, and full-time graphic design responsibilities. Simultaneously managed remote freelance IT and design work.</div>
-  </div>
-</div>
+      <div class="titem"><div class="ti-year">2024 — Present</div><div class="ti-role">Founder & Creative Director</div><div class="ti-company">Demarsive Media · Accra, Ghana</div><div class="ti-desc">Leading a full-service digital creative studio offering graphic design, web development, video production, and social media branding to businesses across Ghana and beyond.</div></div>
+      <div class="titem"><div class="ti-year">2023 — Present (Part-time)</div><div class="ti-role">Design Lead</div><div class="ti-company">Alba · Ghana</div><div class="ti-desc">Leading creative direction and visual design including photo retouching, brand design, and design strategy. Currently contributing part-time alongside Demarsive Media.</div></div>
+      <div class="titem"><div class="ti-year">2022 — 2023</div><div class="ti-role">Videographer & Creative Designer</div><div class="ti-company">MarketGod · Ghana</div><div class="ti-desc">Handled full creative production including videography, video editing, graphic design, and social media content creation to drive brand growth and digital engagement.</div></div>
+      <div class="titem"><div class="ti-year">2021 — 2022</div><div class="ti-role">IT & Graphic Design Specialist</div><div class="ti-company">Ghana Armed Forces · Records Department</div><div class="ti-desc">Served in the Records Department handling IT operations, website management, and graphic design. Simultaneously managed full-time remote IT and design work.</div></div>
+    </div>
     <div class="ind-section">
       <h4>Industries Served</h4>
       <div class="ind-wrap"><span class="ind-chip">Construction</span><span class="ind-chip">Electrical</span><span class="ind-chip">Import & Export</span><span class="ind-chip">Automotive</span><span class="ind-chip">Forex Education</span><span class="ind-chip">Churches</span><span class="ind-chip">Personal Brands</span><span class="ind-chip">Small Business</span><span class="ind-chip">YouTube Creators</span><span class="ind-chip">Education</span></div>
@@ -449,6 +429,20 @@ footer{position:relative;z-index:10;background:var(--bg3);border-top:1px solid v
   </div>
 </footer>
 
+<!-- PORTFOLIO LIGHTBOX -->
+<div id="lightbox" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9998;background:rgba(0,0,0,.95);overflow-y:auto;padding:2rem">
+  <button onclick="closeLightbox()" style="position:fixed;top:1.5rem;right:1.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.3rem;cursor:pointer;z-index:9999;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(10px)">✕</button>
+  <div style="max-width:1000px;margin:0 auto">
+    <div id="lightbox-media" style="width:100%;display:flex;align-items:center;justify-content:center;min-height:60vh"></div>
+    <div style="padding:2rem 0">
+      <div id="lightbox-cat" style="font-size:.7rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:#00c8d4;margin-bottom:.6rem"></div>
+      <h2 id="lightbox-title" style="font-size:1.6rem;font-weight:800;color:#f4f4f8;margin-bottom:.5rem"></h2>
+      <p id="lightbox-desc" style="font-size:.9rem;color:#8a8a9a;line-height:1.8;margin-bottom:1rem"></p>
+      <div id="lightbox-tags" style="display:flex;flex-wrap:wrap;gap:.5rem"></div>
+    </div>
+  </div>
+</div>
+
 <!-- BLOG POST MODAL — must be before </body> -->
 <div id="post-modal">
   <div style="max-width:800px;margin:0 auto;background:#1a1a1f;border:1px solid rgba(0,200,212,.2);border-radius:12px;overflow:hidden">
@@ -513,11 +507,20 @@ async function loadSiteData(){
 function renderPortfolio(items){
   const grid=document.getElementById('port-grid');
   if(!items.length){grid.innerHTML='<p style="color:var(--muted);padding:2rem 0">No portfolio items yet. Add some from the admin panel!</p>';return}
-  grid.innerHTML=items.map((p,i)=>`
+  grid.innerHTML=items.map((p)=>{
+    const isVideo=p.image&&/\.(mp4|webm|mov|avi)$/i.test(p.image);
+    const thumb=p.image
+      ?isVideo
+        ?`<video src="${p.image}" class="port-thumb" muted playsinline style="object-fit:cover;width:100%;height:100%"></video>`
+        :`<div class="port-img-bg" style="background-image:url('${p.image}')"></div><img src="${p.image}" class="port-thumb" alt="${p.title}">`
+      :`<div class="port-thumb-placeholder">${p.emoji||'🎨'}</div>`;
+    const clickAction=editMode?`handlePortImgClick('${p.id}')`:`openLightbox('${p.id}')`;
+    const overlayLabel=editMode?'📷 CHANGE IMAGE':isVideo?'▶ PLAY VIDEO':'🔍 VIEW FULL';
+    return `
     <div class="port-card" data-cat="${p.category}" data-id="${p.id}">
-      <div class="port-img-wrap" onclick="handlePortImgClick('${p.id}')">
-        ${p.image?`<div class="port-img-bg" style="background-image:url('${p.image}')"></div><img src="${p.image}" class="port-thumb" alt="${p.title}">`:`<div class="port-thumb-placeholder">${p.emoji||'🎨'}</div>`}
-        <div class="port-img-overlay edit-mode"><span>📷 CHANGE IMAGE</span></div>
+      <div class="port-img-wrap" onclick="${clickAction}" style="cursor:pointer">
+        ${thumb}
+        <div class="port-img-overlay edit-mode"><span>${overlayLabel}</span></div>
       </div>
       <div class="port-body">
         <div class="port-cat">${p.category}</div>
@@ -525,7 +528,8 @@ function renderPortfolio(items){
         <p class="port-desc">${p.description}</p>
         <div class="port-tags">${(p.tags||[]).map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 // RENDER BLOG
@@ -622,6 +626,42 @@ document.getElementById('contact-form').addEventListener('submit',async function
 // MOBILE MENU
 function toggleMenu(){document.getElementById('nav-links').classList.toggle('open');document.getElementById('menu-toggle').classList.toggle('open')}
 function closeMenu(){document.getElementById('nav-links').classList.remove('open');document.getElementById('menu-toggle').classList.remove('open')}
+
+// PORTFOLIO LIGHTBOX
+function openLightbox(id){
+  if(editMode)return;
+  const item=allPortfolio.find(p=>p.id===id);
+  if(!item)return;
+  const media=document.getElementById('lightbox-media');
+  const isVideo=item.image&&/\.(mp4|webm|mov|avi)$/i.test(item.image);
+  if(isVideo){
+    media.innerHTML=`<video src="${item.image}" controls autoplay muted playsinline style="max-width:100%;max-height:70vh;border-radius:12px;outline:none"></video>`;
+  }else if(item.image){
+    media.innerHTML=`<img src="${item.image}" style="max-width:100%;max-height:70vh;object-fit:contain;border-radius:12px" alt="${item.title}">`;
+  }else{
+    media.innerHTML=`<div style="font-size:6rem;padding:3rem">${item.emoji||'🎨'}</div>`;
+  }
+  document.getElementById('lightbox-cat').textContent=item.category.toUpperCase();
+  document.getElementById('lightbox-title').textContent=item.title;
+  document.getElementById('lightbox-desc').textContent=item.description;
+  document.getElementById('lightbox-tags').innerHTML=(item.tags||[]).map(t=>`<span style="padding:.25rem .8rem;background:rgba(0,200,212,.08);border:1px solid rgba(0,200,212,.2);font-size:.75rem;color:#00c8d4;border-radius:4px">${t}</span>`).join('');
+  document.getElementById('lightbox').style.display='block';
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  const video=document.querySelector('#lightbox-media video');
+  if(video){video.pause();video.src=''}
+  document.getElementById('lightbox').style.display='none';
+  document.body.style.overflow='';
+}
+document.getElementById('lightbox').addEventListener('click',function(e){if(e.target===this)closeLightbox()});
+// Close lightbox/modal with Escape key
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    closeLightbox();
+    closePost();
+  }
+});
 
 // BLOG POST MODAL
 function openPost(id){
